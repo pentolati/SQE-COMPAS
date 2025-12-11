@@ -103,7 +103,7 @@ SQE/
 
 ## Author
 
-**Tata Ariesta** - Product Manager Case Study at SQE (Sinarmas)
+**Tata** - Product Manager Case Study at SQE (Sinarmas)
 
 ## License
 
