@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPAS PRD</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #ffffff;
+            padding: 40px 60px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #5B21B6;
+            margin: 1.5rem 0 0.5rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #A855F7;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #7C3AED;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid #C4B5FD;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #5B21B6;
+            margin: 1.5rem 0 0.8rem 0;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #6D28D9;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        p {
+            margin: 0.8rem 0;
+        }
+
+        blockquote {
+            background: linear-gradient(135deg, #f3e8ff 0%, #ede9fe 100%);
+            border-left: 4px solid #7C3AED;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+
+        blockquote strong {
+            color: #5B21B6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: linear-gradient(135deg, #5B21B6 0%, #7C3AED 100%);
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        tr:hover {
+            background: #f3e8ff;
+        }
+
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            color: #6D28D9;
+        }
+
+        pre {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        ul, ol {
+            margin: 0.5rem 0 0.5rem 1.5rem;
+        }
+
+        li {
+            margin: 0.3rem 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #e5e7eb;
+            margin: 2rem 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+        }
+
+        strong {
+            font-weight: 600;
+            color: #374151;
+        }
+
+        a {
+            color: #7C3AED;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Page break for PDF */
+        h2 {
+            page-break-before: auto;
+        }
+
+        table {
+            page-break-inside: avoid;
+        }
+
+        /* Header styling for document info */
+        body > p:first-of-type {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        /* Footer quote styling */
+        em {
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="product-requirements-document-prd-template">Product Requirements Document (PRD) Template</h1>
+<h2 id="for-sqe-ai-product-case-study">For SQE AI Product Case Study</h2>
+<hr />
+<p><strong>Product Name:</strong> [Product Name]<br />
+<strong>Version:</strong> [X.X]<br />
+<strong>Author:</strong> [Name]<br />
+<strong>Date:</strong> [Date]<br />
+<strong>Status:</strong> [Draft / Final]</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<h3 id="part-1-ai-product-concept-evaluation-recommendation">Part 1: AI Product Concept Evaluation &amp; Recommendation</h3>
+<ol>
+<li><a href="#1-project-selection--justification">Project Selection &amp; Justification</a></li>
+<li><a href="#2-market-opportunity--problem-solved">Market Opportunity &amp; Problem Solved</a></li>
+<li><a href="#3-competitive-landscape">Competitive Landscape</a></li>
+<li><a href="#4-feasibility-assessment">Feasibility Assessment</a></li>
+<li><a href="#5-hypothesis-validation">Hypothesis Validation</a></li>
+</ol>
+<h3 id="part-2-high-level-project-plan-simple-prd">Part 2: High-Level Project Plan &amp; Simple PRD</h3>
+<ol>
+<li><a href="#6-project-plan-approach">Project Plan Approach</a></li>
+<li><a href="#7-simple-prd---core-ai-feature">Simple PRD - Core AI Feature</a></li>
+<li><a href="#8-screen-inventory-sampling">Screen Inventory (Sampling)</a></li>
+</ol>
+<hr />
+<h1 id="part-1-ai-product-concept-evaluation-recommendation_1">PART 1: AI PRODUCT CONCEPT EVALUATION &amp; RECOMMENDATION</h1>
+<hr />
+<h2 id="1-project-selection-justification">1. Project Selection &amp; Justification</h2>
+<h3 id="11-executive-summary">1.1 Executive Summary</h3>
+<blockquote>
+<p><strong>Chosen Project:</strong> [State your chosen project clearly]</p>
+<p><strong>One-line Justification:</strong> [Brief statement on why this project was selected]</p>
+</blockquote>
+<h3 id="12-comparative-analysis">1.2 Comparative Analysis</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Concept 1: [Name]</th>
+<th>Concept 2: [Name]</th>
+<th>Winner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Market Opportunity</td>
+<td>[Assessment]</td>
+<td>[Assessment]</td>
+<td>[1/2]</td>
+</tr>
+<tr>
+<td>Competitive Landscape</td>
+<td>[Assessment]</td>
+<td>[Assessment]</td>
+<td>[1/2]</td>
+</tr>
+<tr>
+<td>Technical Feasibility</td>
+<td>[Assessment]</td>
+<td>[Assessment]</td>
+<td>[1/2]</td>
+</tr>
+<tr>
+<td>Business Impact</td>
+<td>[Assessment]</td>
+<td>[Assessment]</td>
+<td>[1/2]</td>
+</tr>
+<tr>
+<td>Strategic Fit</td>
+<td>[Assessment]</td>
+<td>[Assessment]</td>
+<td>[1/2]</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td>[X/5]</td>
+<td>[X/5]</td>
+<td><strong>[Winner]</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-justification-narrative">1.3 Justification Narrative</h3>
+<p><strong>Why [Chosen Project]?</strong><br />
+- Market opportunity: [Explanation]<br />
+- Competitive advantage: [Explanation]<br />
+- Technical feasibility: [Explanation]<br />
+- Business impact: [Explanation]<br />
+- Strategic alignment: [Explanation]</p>
+<p><strong>Why NOT [Rejected Project]?</strong><br />
+[Brief explanation]</p>
+<hr />
+<h2 id="2-market-opportunity-problem-solved">2. Market Opportunity &amp; Problem Solved</h2>
+<h3 id="21-problem-statement">2.1 Problem Statement</h3>
+<p><strong>The Core Problem:</strong></p>
+<blockquote>
+<p>[Clear articulation of the business problem]</p>
+</blockquote>
+<p><strong>Who Experiences This Problem?</strong></p>
+<table>
+<thead>
+<tr>
+<th>Stakeholder</th>
+<th>Pain Point</th>
+<th>Current Solution</th>
+<th>Gap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[User 1]</td>
+<td>[Pain]</td>
+<td>[Current]</td>
+<td>[Gap]</td>
+</tr>
+<tr>
+<td>[User 2]</td>
+<td>[Pain]</td>
+<td>[Current]</td>
+<td>[Gap]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-market-size">2.2 Market Size</h3>
+<table>
+<thead>
+<tr>
+<th>Market</th>
+<th>Size</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TAM (Global)</td>
+<td>[USD X B]</td>
+<td>[Source]</td>
+</tr>
+<tr>
+<td>SAM (Regional)</td>
+<td>[USD X M]</td>
+<td>[Source]</td>
+</tr>
+<tr>
+<td>SOM (Year 1-3)</td>
+<td>[USD X M]</td>
+<td>[Assumptions]</td>
+</tr>
+<tr>
+<td>CAGR</td>
+<td>[X%]</td>
+<td>[Source]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-target-customer-segments">2.3 Target Customer Segments</h3>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Description</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Segment 1]</td>
+<td>[Description]</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>[Segment 2]</td>
+<td>[Description]</td>
+<td>P1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-competitive-landscape">3. Competitive Landscape</h2>
+<h3 id="31-competitor-analysis">3.1 Competitor Analysis</h3>
+<table>
+<thead>
+<tr>
+<th>Competitor</th>
+<th>Type</th>
+<th>Strengths</th>
+<th>Weaknesses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Competitor 1]</td>
+<td>Direct</td>
+<td>[List]</td>
+<td>[List]</td>
+</tr>
+<tr>
+<td>[Competitor 2]</td>
+<td>Direct</td>
+<td>[List]</td>
+<td>[List]</td>
+</tr>
+<tr>
+<td>[Competitor 3]</td>
+<td>Indirect</td>
+<td>[List]</td>
+<td>[List]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-sqes-strategic-advantages">3.2 SQE's Strategic Advantages</h3>
+<table>
+<thead>
+<tr>
+<th>Advantage</th>
+<th>How to Leverage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Advantage 1]</td>
+<td>[Strategy]</td>
+</tr>
+<tr>
+<td>[Advantage 2]</td>
+<td>[Strategy]</td>
+</tr>
+<tr>
+<td>[Advantage 3]</td>
+<td>[Strategy]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-key-differentiators">3.3 Key Differentiators</h3>
+<ol>
+<li><strong>[Differentiator 1]:</strong> [Explanation]</li>
+<li><strong>[Differentiator 2]:</strong> [Explanation]</li>
+<li><strong>[Differentiator 3]:</strong> [Explanation]</li>
+</ol>
+<hr />
+<h2 id="4-feasibility-assessment">4. Feasibility Assessment</h2>
+<h3 id="41-data-availability-quality">4.1 Data Availability &amp; Quality</h3>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Source</th>
+<th>Availability</th>
+<th>Challenges</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Data 1]</td>
+<td>[Internal/External]</td>
+<td>[H/M/L]</td>
+<td>[Issues]</td>
+</tr>
+<tr>
+<td>[Data 2]</td>
+<td>[Internal/External]</td>
+<td>[H/M/L]</td>
+<td>[Issues]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Privacy &amp; Ethical Considerations:</strong><br />
+| Concern | Regulation | Mitigation |<br />
+|---------|------------|------------|<br />
+| [Concern] | [PDP Law/GDPR] | [Approach] |</p>
+<h3 id="42-ai-model-complexity">4.2 AI Model Complexity</h3>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>AI Type</th>
+<th>Complexity</th>
+<th>Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Capability 1]</td>
+<td>[NLP/ML/GenAI]</td>
+<td>H/M/L</td>
+<td>[Proven/Emerging]</td>
+</tr>
+<tr>
+<td>[Capability 2]</td>
+<td>[Type]</td>
+<td>H/M/L</td>
+<td>[Proven/Emerging]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-computational-needs-infrastructure">4.3 Computational Needs &amp; Infrastructure</h3>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Specification</th>
+<th>Cost Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Training</td>
+<td>[GPU/Cloud specs]</td>
+<td>[$/month]</td>
+</tr>
+<tr>
+<td>Inference</td>
+<td>[Specs]</td>
+<td>[$/month]</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>[TB]</td>
+<td>[$/month]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="44-integration-challenges">4.4 Integration Challenges</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Complexity</th>
+<th>Challenge</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[System 1]</td>
+<td>H/M/L</td>
+<td>[Challenge]</td>
+<td>[Strategy]</td>
+</tr>
+<tr>
+<td>[System 2]</td>
+<td>H/M/L</td>
+<td>[Challenge]</td>
+<td>[Strategy]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-hypothesis-validation">5. Hypothesis Validation</h2>
+<h3 id="51-key-hypotheses-validation">5.1 Key Hypotheses &amp; Validation</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Hypothesis</th>
+<th>Category</th>
+<th>Validation Method</th>
+<th>Success Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1</td>
+<td>[Statement]</td>
+<td>Market</td>
+<td>[Method]</td>
+<td>[Criteria]</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>[Statement]</td>
+<td>Technical</td>
+<td>[Method]</td>
+<td>[Criteria]</td>
+</tr>
+<tr>
+<td>H3</td>
+<td>[Statement]</td>
+<td>User Need</td>
+<td>[Method]</td>
+<td>[Criteria]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-validation-timeline">5.2 Validation Timeline</h3>
+<pre><code>Week 1-2          Week 3-4          Week 5-6          Week 7-8
+    │                 │                 │                 │
+    ▼                 ▼                 ▼                 ▼
+[Market          [Technical        [User             [Synthesis &amp;
+ Research]        POC]              Testing]          Decision]
+</code></pre>
+<hr />
+<h1 id="part-2-high-level-project-plan-simple-prd_1">PART 2: HIGH-LEVEL PROJECT PLAN &amp; SIMPLE PRD</h1>
+<hr />
+<h2 id="6-project-plan-approach">6. Project Plan Approach</h2>
+<h3 id="61-strategic-alignment">6.1 Strategic Alignment</h3>
+<table>
+<thead>
+<tr>
+<th>SQE Strategic Goal</th>
+<th>How This Project Aligns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Digital Transformation</td>
+<td>[Alignment]</td>
+</tr>
+<tr>
+<td>Market Leadership</td>
+<td>[Alignment]</td>
+</tr>
+<tr>
+<td>Revenue Growth</td>
+<td>[Alignment]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-key-milestones-timeline">6.2 Key Milestones &amp; Timeline</h3>
+<pre><code>Month 1-2        Month 3-4        Month 5-6        Month 7-8        Month 9+
+    │                │                │                │                │
+    ▼                ▼                ▼                ▼                ▼
+┌────────┐      ┌────────┐      ┌────────┐      ┌────────┐      ┌────────┐
+│Discovery│ ──► │ Design │ ──► │  MVP   │ ──► │ Pilot  │ ──► │  GA    │
+│&amp; Plan   │      │&amp; Proto │      │  Dev   │      │ Test   │      │ Launch │
+└────────┘      └────────┘      └────────┘      └────────┘      └────────┘
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Key Deliverables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discovery &amp; Planning</td>
+<td>[X weeks]</td>
+<td>[Deliverables]</td>
+</tr>
+<tr>
+<td>Design &amp; Prototyping</td>
+<td>[X weeks]</td>
+<td>[Deliverables]</td>
+</tr>
+<tr>
+<td>MVP Development</td>
+<td>[X weeks]</td>
+<td>[Deliverables]</td>
+</tr>
+<tr>
+<td>Pilot &amp; Testing</td>
+<td>[X weeks]</td>
+<td>[Deliverables]</td>
+</tr>
+<tr>
+<td>GA Launch</td>
+<td>[X weeks]</td>
+<td>[Deliverables]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-key-stakeholders">6.3 Key Stakeholders</h3>
+<p><strong>Internal:</strong><br />
+| Stakeholder | Role | Engagement |<br />
+|-------------|------|------------|<br />
+| [C-Level] | Sponsor | [Strategy] |<br />
+| [Product] | Owner | [Strategy] |<br />
+| [Engineering] | Builder | [Strategy] |<br />
+| [Compliance] | Reviewer | [Strategy] |</p>
+<p><strong>External:</strong><br />
+| Stakeholder | Role | Engagement |<br />
+|-------------|------|------------|<br />
+| [Customers] | Pilot users | [Strategy] |<br />
+| [Regulators] | Oversight | [Strategy] |</p>
+<h3 id="64-metrics-of-success">6.4 Metrics of Success</h3>
+<p><strong>AI Performance:</strong><br />
+| Metric | Target |<br />
+|--------|--------|<br />
+| Accuracy | [X%] |<br />
+| Precision | [X%] |<br />
+| Recall | [X%] |<br />
+| Latency | [&lt; X sec] |</p>
+<p><strong>Business Impact:</strong><br />
+| Metric | Baseline | Target |<br />
+|--------|----------|--------|<br />
+| [Cost Savings/Revenue] | [Current] | [Target] |<br />
+| [Efficiency Gain] | [Current] | [Target] |<br />
+| User Adoption | N/A | [X%] |<br />
+| NPS | N/A | [X] |</p>
+<hr />
+<h2 id="7-simple-prd-core-ai-feature">7. Simple PRD - Core AI Feature</h2>
+<blockquote>
+<p><strong>Focus:</strong> ONE core AI-powered feature</p>
+</blockquote>
+<h3 id="71-feature-overview">7.1 Feature Overview</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Feature Name</strong></td>
+<td>[Name]</td>
+</tr>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>[Why this feature exists]</td>
+</tr>
+<tr>
+<td><strong>User Problem</strong></td>
+<td>[Problem it solves]</td>
+</tr>
+<tr>
+<td><strong>Target User</strong></td>
+<td>[Primary user]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72-acceptance-criteria">7.2 Acceptance Criteria</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Criteria (Given/When/Then)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AC-1</td>
+<td>Given [context], When [action], Then [outcome]</td>
+</tr>
+<tr>
+<td>AC-2</td>
+<td>Given [context], When [action], Then [outcome]</td>
+</tr>
+<tr>
+<td>AC-3</td>
+<td>Given [context], When [action], Then [outcome]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="73-key-ai-driven-functionality">7.3 Key AI-Driven Functionality</h3>
+<p><strong>How AI Works (User Perspective):</strong></p>
+<pre><code>┌──────────────┐      ┌──────────────┐      ┌──────────────┐
+│  USER INPUT  │ ──►  │ AI PROCESS   │ ──►  │   OUTPUT     │
+│  [Action]    │      │ [Processing] │      │  [Result]    │
+└──────────────┘      └──────────────┘      └──────────────┘
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>User Action</th>
+<th>AI Response</th>
+<th>User Sees</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>[Action]</td>
+<td>[AI processing]</td>
+<td>[Output]</td>
+</tr>
+<tr>
+<td>2</td>
+<td>[Action]</td>
+<td>[AI processing]</td>
+<td>[Output]</td>
+</tr>
+<tr>
+<td>3</td>
+<td>[Action]</td>
+<td>[AI processing]</td>
+<td>[Output]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="74-high-level-ai-technical-considerations">7.4 High-Level AI Technical Considerations</h3>
+<p><strong>Data Feeds:</strong><br />
+| Data | Source | Frequency |<br />
+|------|--------|-----------|<br />
+| [Data 1] | [Source] | [Real-time/Batch] |<br />
+| [Data 2] | [Source] | [Frequency] |</p>
+<p><strong>Core AI Approach:</strong><br />
+| Component | Approach | Rationale |<br />
+|-----------|----------|-----------|<br />
+| [Component] | [NLP/ML/LLM/RAG] | [Why] |</p>
+<h3 id="75-negative-cases-ai-failure-modes-mitigation">7.5 Negative Cases (AI Failure Modes) &amp; Mitigation</h3>
+<table>
+<thead>
+<tr>
+<th>Failure Mode</th>
+<th>Impact</th>
+<th>Probability</th>
+<th>Mitigation</th>
+<th>Fallback</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Failure 1]</td>
+<td>H/M/L</td>
+<td>H/M/L</td>
+<td>[Strategy]</td>
+<td>[Behavior]</td>
+</tr>
+<tr>
+<td>[Failure 2]</td>
+<td>H/M/L</td>
+<td>H/M/L</td>
+<td>[Strategy]</td>
+<td>[Behavior]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="76-quality-measurement">7.6 Quality Measurement</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Measurement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accuracy</td>
+<td>[X%]</td>
+<td>[Method]</td>
+</tr>
+<tr>
+<td>Precision</td>
+<td>[X%]</td>
+<td>[Method]</td>
+</tr>
+<tr>
+<td>Recall</td>
+<td>[X%]</td>
+<td>[Method]</td>
+</tr>
+<tr>
+<td>Response Time</td>
+<td>[&lt; X sec]</td>
+<td>[Method]</td>
+</tr>
+<tr>
+<td>User Satisfaction</td>
+<td>[X NPS]</td>
+<td>[Survey]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="77-non-functional-requirements-ai-specific">7.7 Non-Functional Requirements (AI-Specific)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>[OJK/PDP Law/ISO 27001]</td>
+</tr>
+<tr>
+<td><strong>Explainability</strong></td>
+<td>[SHAP/LIME/Confidence scoring]</td>
+</tr>
+<tr>
+<td><strong>Auditability</strong></td>
+<td>[X years log retention, decision trail]</td>
+</tr>
+<tr>
+<td><strong>Latency</strong></td>
+<td>[&lt; X sec response time]</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>[Encryption, RBAC, data masking]</td>
+</tr>
+<tr>
+<td><strong>Availability</strong></td>
+<td>[99.X% uptime SLA]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-screen-inventory-sampling">8. Screen Inventory (Sampling)</h2>
+<blockquote>
+<p><em>Screenshot/mockup untuk fitur utama - akan diisi kemudian</em></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Screen</th>
+<th>Description</th>
+<th>Screenshot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dashboard</td>
+<td>[Description]</td>
+<td>[Insert SS]</td>
+</tr>
+<tr>
+<td>[Feature Screen]</td>
+<td>[Description]</td>
+<td>[Insert SS]</td>
+</tr>
+<tr>
+<td>[AI Interaction]</td>
+<td>[Description]</td>
+<td>[Insert SS]</td>
+</tr>
+<tr>
+<td>[Alert/Notification]</td>
+<td>[Description]</td>
+<td>[Insert SS]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="appendix">Appendix</h2>
+<h3 id="a-glossary">A. Glossary</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Term]</td>
+<td>[Definition]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b-references">B. References</h3>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Ref]</td>
+<td>[Description]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Template: SQE AI Product Case Study - Simple PRD</em></p>
+</body>
+</html>

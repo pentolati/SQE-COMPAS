@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPAS PRD</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #ffffff;
+            padding: 40px 60px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #5B21B6;
+            margin: 1.5rem 0 0.5rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #A855F7;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #7C3AED;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid #C4B5FD;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #5B21B6;
+            margin: 1.5rem 0 0.8rem 0;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #6D28D9;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        p {
+            margin: 0.8rem 0;
+        }
+
+        blockquote {
+            background: linear-gradient(135deg, #f3e8ff 0%, #ede9fe 100%);
+            border-left: 4px solid #7C3AED;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+
+        blockquote strong {
+            color: #5B21B6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: linear-gradient(135deg, #5B21B6 0%, #7C3AED 100%);
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        tr:hover {
+            background: #f3e8ff;
+        }
+
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            color: #6D28D9;
+        }
+
+        pre {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        ul, ol {
+            margin: 0.5rem 0 0.5rem 1.5rem;
+        }
+
+        li {
+            margin: 0.3rem 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #e5e7eb;
+            margin: 2rem 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+        }
+
+        strong {
+            font-weight: 600;
+            color: #374151;
+        }
+
+        a {
+            color: #7C3AED;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Page break for PDF */
+        h2 {
+            page-break-before: auto;
+        }
+
+        table {
+            page-break-inside: avoid;
+        }
+
+        /* Header styling for document info */
+        body > p:first-of-type {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        /* Footer quote styling */
+        em {
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="compas">COMPAS</h1>
+<h2 id="compliance-process-automation-service">Compliance Process Automation Service</h2>
+<h3 id="product-requirements-document-prd">Product Requirements Document (PRD)</h3>
+<hr />
+<p><strong>Product Name:</strong> COMPAS (Compliance Process Automation Service)<br />
+<strong>Version:</strong> 1.0<br />
+<strong>Author:</strong> Banat Zata (Tata)<br />
+<strong>Date:</strong> December 2024<br />
+<strong>Status:</strong> Final</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<h3 id="part-1-ai-product-concept-evaluation-recommendation">Part 1: AI Product Concept Evaluation &amp; Recommendation</h3>
+<ol>
+<li><a href="#1-project-selection--justification">Project Selection &amp; Justification</a></li>
+<li><a href="#2-market-opportunity--problem-solved">Market Opportunity &amp; Problem Solved</a></li>
+<li><a href="#3-competitive-landscape">Competitive Landscape</a></li>
+<li><a href="#4-feasibility-assessment">Feasibility Assessment</a></li>
+<li><a href="#5-hypothesis-validation">Hypothesis Validation</a></li>
+</ol>
+<h3 id="part-2-high-level-project-plan-simple-prd">Part 2: High-Level Project Plan &amp; Simple PRD</h3>
+<ol>
+<li><a href="#6-project-plan-approach">Project Plan Approach</a></li>
+<li><a href="#7-simple-prd---core-ai-feature">Simple PRD - Core AI Feature</a></li>
+<li><a href="#8-screen-inventory-sampling">Screen Inventory (Sampling)</a></li>
+</ol>
+<hr />
+<h1 id="part-1-ai-product-concept-evaluation-recommendation_1">PART 1: AI PRODUCT CONCEPT EVALUATION &amp; RECOMMENDATION</h1>
+<hr />
+<h2 id="1-project-selection-justification">1. Project Selection &amp; Justification</h2>
+<h3 id="11-executive-summary">1.1 Executive Summary</h3>
+<blockquote>
+<p><strong>Chosen Project:</strong> AI Monitoring for Operational Process &amp; Regulation Alignment (COMPAS)</p>
+<p><strong>One-line Justification:</strong> COMPAS addresses a mission-critical need with built-in customer base (40+ SMMA subsidiaries), clearer ROI through compliance cost avoidance, and stronger strategic alignment with SQE's position as digital enabler for Sinar Mas Group.</p>
+</blockquote>
+<h3 id="12-comparative-analysis">1.2 Comparative Analysis</h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Concept 1: Market Insights Platform</th>
+<th>Concept 2: COMPAS (Compliance AI)</th>
+<th>Winner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Market Opportunity</strong></td>
+<td>Large but crowded market; many established players</td>
+<td>Growing RegTech market (19.6% CAGR); less competition in Indonesian market</td>
+<td><strong>COMPAS</strong></td>
+</tr>
+<tr>
+<td><strong>Competitive Landscape</strong></td>
+<td>Dominated by Bloomberg, Nielsen, Gartner; high barrier</td>
+<td>Limited local players; global GRC tools lack Indonesian regulatory expertise</td>
+<td><strong>COMPAS</strong></td>
+</tr>
+<tr>
+<td><strong>Technical Feasibility</strong></td>
+<td>Requires diverse external data sources; complex NLP for sentiment</td>
+<td>Internal data available; rule-based + AI hybrid approach</td>
+<td><strong>COMPAS</strong></td>
+</tr>
+<tr>
+<td><strong>Business Impact</strong></td>
+<td>Revenue generation (uncertain adoption)</td>
+<td>Cost avoidance (Rp 10B+ fines); license protection; rating confidence</td>
+<td><strong>COMPAS</strong></td>
+</tr>
+<tr>
+<td><strong>Strategic Fit</strong></td>
+<td>Generic B2B product; no unique SQE advantage</td>
+<td>Perfect fit: 40+ captive subsidiaries; cross-pillar (Finance + Mining)</td>
+<td><strong>COMPAS</strong></td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td>1/5</td>
+<td><strong>5/5</strong></td>
+<td><strong>COMPAS</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-justification-narrative">1.3 Justification Narrative</h3>
+<p><strong>Why COMPAS?</strong></p>
+<ol>
+<li>
+<p><strong>Market Opportunity:</strong> The RegTech market is projected to grow from $14.9B (2024) to $106.9B (2035) at 19.6% CAGR. Indonesian regulatory environment is becoming stricter with MOE Regulation No. 20/2025, OJK strengthening, and ESG pressure from investors.</p>
+</li>
+<li>
+<p><strong>Competitive Advantage:</strong> No existing solution combines Indonesian regulatory intelligence (OJK, BI, MOE), Bahasa Indonesia AI assistant, and cross-pillar design for both Financial Services and Mining. Global players like IBM OpenPages and SAP GRC lack local regulatory expertise.</p>
+</li>
+<li>
+<p><strong>Technical Feasibility:</strong> Core data (SOPs, process logs, regulatory documents) exists within Sinar Mas Group. AI approach can start with rule-based systems enhanced by ML, reducing initial complexity. RAG architecture prevents hallucination risks.</p>
+</li>
+<li>
+<p><strong>Business Impact:</strong> Direct cost avoidance through preventing regulatory fines (OJK fines can reach billions of Rupiah), license protection, and audit efficiency (70% time reduction). ROI is measurable and immediate.</p>
+</li>
+<li>
+<p><strong>Strategic Alignment:</strong> SQE positions as the digital transformation enabler for Sinar Mas Group. COMPAS serves 40+ SMMA subsidiaries immediately, with expansion path to Mining pillar (DSSA/GEMS - USD 3B revenue).</p>
+</li>
+</ol>
+<p><strong>Why NOT Market Insights Platform?</strong></p>
+<ul>
+<li>Highly competitive market with established players (Bloomberg, Nielsen, Gartner, Palantir)</li>
+<li>Requires significant external data acquisition costs</li>
+<li>No unique SQE advantage; would compete as generic vendor</li>
+<li>Longer path to ROI with uncertain enterprise adoption</li>
+<li>Less strategic alignment with Sinar Mas Group's immediate needs</li>
+</ul>
+<hr />
+<h2 id="2-market-opportunity-problem-solved">2. Market Opportunity &amp; Problem Solved</h2>
+<h3 id="21-problem-statement">2.1 Problem Statement</h3>
+<p><strong>The Core Problem:</strong></p>
+<blockquote>
+<p>Large conglomerates like Sinar Mas Group struggle to maintain consistent compliance across 40+ subsidiaries, each managing compliance independently with fragmented standards, reactive approaches, and manual processes that consume 60-70% of compliance officers' time on documentation rather than strategic risk management.</p>
+</blockquote>
+<p><strong>Who Experiences This Problem?</strong></p>
+<table>
+<thead>
+<tr>
+<th>Stakeholder</th>
+<th>Pain Point</th>
+<th>Current Solution</th>
+<th>Gap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C-Level / Board</strong></td>
+<td>No single view of enterprise-wide compliance risk; surprises during audits</td>
+<td>Quarterly reports from each subsidiary</td>
+<td>Real-time visibility; proactive risk identification</td>
+</tr>
+<tr>
+<td><strong>Compliance Officers</strong></td>
+<td>60-70% time on documentation; reactive issue discovery</td>
+<td>Manual spreadsheets; email-based tracking</td>
+<td>Automation; predictive risk detection</td>
+</tr>
+<tr>
+<td><strong>Department Managers</strong></td>
+<td>Unclear SOP requirements; fear of audit findings</td>
+<td>Ad-hoc compliance training</td>
+<td>Clear guidance; real-time compliance status</td>
+</tr>
+<tr>
+<td><strong>Employees</strong></td>
+<td>Complex SOPs; don't know "why" behind rules</td>
+<td>PDF manuals; occasional training</td>
+<td>Easy-to-understand guidance; AI assistant</td>
+</tr>
+<tr>
+<td><strong>Auditors</strong></td>
+<td>Time-consuming audit preparation; incomplete trails</td>
+<td>Manual evidence collection</td>
+<td>Pre-compiled audit trails; AI-generated summaries</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-market-size">2.2 Market Size</h3>
+<table>
+<thead>
+<tr>
+<th>Market</th>
+<th>Size</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TAM (Global RegTech)</strong></td>
+<td>$14.9B (2024) → $106.9B (2035)</td>
+<td>Precedence Research</td>
+</tr>
+<tr>
+<td><strong>TAM (AI Compliance Monitoring)</strong></td>
+<td>$1.8B (2024) → $5.2B (2030)</td>
+<td>MarketsandMarkets</td>
+</tr>
+<tr>
+<td><strong>SAM (SEA Financial Services GRC)</strong></td>
+<td>~$500M (2024)</td>
+<td>Industry estimates</td>
+</tr>
+<tr>
+<td><strong>SOM (Indonesia Enterprise GRC)</strong></td>
+<td>~$50M (2024)</td>
+<td>Sinar Mas internal data</td>
+</tr>
+<tr>
+<td><strong>Initial Target (SMMA)</strong></td>
+<td>$5-10M internal budget allocation</td>
+<td>SQE estimates</td>
+</tr>
+<tr>
+<td><strong>CAGR</strong></td>
+<td>19.6% (RegTech), 19.4% (AI Compliance)</td>
+<td>Multiple sources</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-target-customer-segments">2.3 Target Customer Segments</h3>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Description</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SMMA Financial Services</strong></td>
+<td>Bank Sinarmas, Asuransi Sinar Mas, Sinarmas Multifinance, etc. (40+ entities)</td>
+<td>P0</td>
+</tr>
+<tr>
+<td><strong>Mining Pillar (DSSA/GEMS)</strong></td>
+<td>Large mining operations with environmental compliance needs; USD 3B revenue</td>
+<td>P1</td>
+</tr>
+<tr>
+<td><strong>External Indonesian Conglomerates</strong></td>
+<td>Similar multi-entity structures with compliance challenges</td>
+<td>P2 (Future)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-competitive-landscape">3. Competitive Landscape</h2>
+<h3 id="31-competitor-analysis">3.1 Competitor Analysis</h3>
+<table>
+<thead>
+<tr>
+<th>Competitor</th>
+<th>Type</th>
+<th>Strengths</th>
+<th>Weaknesses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IBM OpenPages</strong></td>
+<td>Direct (Global)</td>
+<td>Enterprise GRC; Watson AI integration; brand trust</td>
+<td>Expensive; no Indonesian regulatory expertise; complex implementation</td>
+</tr>
+<tr>
+<td><strong>SAP GRC</strong></td>
+<td>Direct (Global)</td>
+<td>Deep ERP integration; comprehensive modules</td>
+<td>Locked to SAP ecosystem; limited AI capabilities; no local language support</td>
+</tr>
+<tr>
+<td><strong>ServiceNow GRC</strong></td>
+<td>Direct (Global)</td>
+<td>Modern UX; IT workflow integration</td>
+<td>Adapted from ITSM, not compliance-first; limited regulatory content</td>
+</tr>
+<tr>
+<td><strong>Celonis</strong></td>
+<td>Indirect</td>
+<td>Process mining leadership; AI-powered insights</td>
+<td>Process-first, not compliance-first; no gamification; expensive</td>
+</tr>
+<tr>
+<td><strong>Local Consultants</strong></td>
+<td>Indirect</td>
+<td>Indonesian regulatory knowledge; relationship-based</td>
+<td>Manual processes; not scalable; no AI capabilities</td>
+</tr>
+<tr>
+<td><strong>Singapore GRC Startups</strong></td>
+<td>Regional</td>
+<td>Regional presence; modern tech stack</td>
+<td>Limited Indonesian regulatory depth; smaller scale</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-sqes-strategic-advantages">3.2 SQE's Strategic Advantages</h3>
+<table>
+<thead>
+<tr>
+<th>Advantage</th>
+<th>How to Leverage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Built-in Customer Base</strong></td>
+<td>40+ SMMA subsidiaries ready for pilot; no sales cycle needed</td>
+</tr>
+<tr>
+<td><strong>Local Regulatory Expertise</strong></td>
+<td>Deep OJK, BI, MOE knowledge; partnership potential with regulators</td>
+</tr>
+<tr>
+<td><strong>Cross-Pillar Position</strong></td>
+<td>Unique opportunity to serve both Financial Services AND Mining</td>
+</tr>
+<tr>
+<td><strong>Sinar Mas Ecosystem</strong></td>
+<td>Integration with existing digital products (ASJ, GARASI Dealer)</td>
+</tr>
+<tr>
+<td><strong>Indonesian Language</strong></td>
+<td>Native Bahasa Indonesia AI assistant; cultural understanding</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-key-differentiators">3.3 Key Differentiators</h3>
+<ol>
+<li>
+<p><strong>Indonesian Regulatory Intelligence:</strong> Built-in knowledge of OJK, BI, MOE, SMKP regulations with OCR capability for Indonesian regulatory PDFs and API integration with regulatory bodies.</p>
+</li>
+<li>
+<p><strong>Bahasa Indonesia AI Assistant:</strong> RAG-grounded natural language compliance support that answers questions, cites SOPs, and explains "why" behind requirements - 24/7 availability for all employees.</p>
+</li>
+<li>
+<p><strong>Human-in-the-Loop by Design:</strong> Mandatory human approval for high-risk decisions; multi-level escalation workflow; full audit trail - addressing Indonesian corporate culture's preference for human oversight.</p>
+</li>
+<li>
+<p><strong>Contextual Compliance Engagement:</strong> Risk-based approach replacing generic gamification; links compliance to real-world KPIs; respects Indonesian corporate culture.</p>
+</li>
+<li>
+<p><strong>Cross-Pillar Architecture:</strong> Designed from day one for both Financial Services and Mining compliance requirements.</p>
+</li>
+<li>
+<p><strong>PDP Law 2023 Native:</strong> Data protection built-in; data residency compliance; 7-year retention aligned with regulatory requirements.</p>
+</li>
+</ol>
+<hr />
+<h2 id="4-feasibility-assessment">4. Feasibility Assessment</h2>
+<h3 id="41-data-availability-quality">4.1 Data Availability &amp; Quality</h3>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Source</th>
+<th>Availability</th>
+<th>Challenges</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SOPs &amp; Policies</strong></td>
+<td>Internal documentation</td>
+<td>High</td>
+<td>Inconsistent formats; some in PDF</td>
+</tr>
+<tr>
+<td><strong>Process Logs</strong></td>
+<td>ERP systems (40+ subsidiaries)</td>
+<td>Medium</td>
+<td>Legacy system diversity; ETL complexity</td>
+</tr>
+<tr>
+<td><strong>Regulatory Documents</strong></td>
+<td>OJK, BI, MOE publications</td>
+<td>Medium</td>
+<td>PDF format; handwritten notes; no API</td>
+</tr>
+<tr>
+<td><strong>Transaction Data</strong></td>
+<td>Core banking, ERP</td>
+<td>High</td>
+<td>Privacy concerns; data residency</td>
+</tr>
+<tr>
+<td><strong>Training Records</strong></td>
+<td>HR systems</td>
+<td>Medium</td>
+<td>Fragmented across entities</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Privacy &amp; Ethical Considerations:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Regulation</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personal Data Processing</td>
+<td>PDP Law 2023 (UU PDP)</td>
+<td>Privacy by design; consent management; data minimization</td>
+</tr>
+<tr>
+<td>Financial Data Residency</td>
+<td>OJK regulations</td>
+<td>On-premise/local cloud option; encryption</td>
+</tr>
+<tr>
+<td>Employee Monitoring</td>
+<td>Labor laws</td>
+<td>Transparency; aggregate metrics; no individual surveillance</td>
+</tr>
+<tr>
+<td>AI Decision Transparency</td>
+<td>Emerging AI regulations</td>
+<td>SHAP/LIME explainability; human-in-the-loop</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-ai-model-complexity">4.2 AI Model Complexity</h3>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>AI Type</th>
+<th>Complexity</th>
+<th>Maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Deviation Detection</strong></td>
+<td>Rule-based + ML Classification</td>
+<td>Medium</td>
+<td>Proven</td>
+</tr>
+<tr>
+<td><strong>Document Processing</strong></td>
+<td>OCR + NLP</td>
+<td>Medium</td>
+<td>Proven</td>
+</tr>
+<tr>
+<td><strong>AI Assistant</strong></td>
+<td>LLM + RAG</td>
+<td>Medium-High</td>
+<td>Proven (with safeguards)</td>
+</tr>
+<tr>
+<td><strong>Regulatory Change Detection</strong></td>
+<td>NLP + Knowledge Graph</td>
+<td>High</td>
+<td>Emerging</td>
+</tr>
+<tr>
+<td><strong>Risk Scoring</strong></td>
+<td>ML Regression/Classification</td>
+<td>Medium</td>
+<td>Proven</td>
+</tr>
+<tr>
+<td><strong>Explainability</strong></td>
+<td>SHAP/LIME</td>
+<td>Medium</td>
+<td>Proven</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Technical Considerations:</strong><br />
+- Bahasa Indonesia NLP is 15-20% less accurate than English; requires fine-tuning<br />
+- RAG architecture essential to prevent hallucinations in compliance context<br />
+- Hybrid approach: start rule-based, enhance with ML over time<br />
+- Model retraining: quarterly with regulatory updates</p>
+<h3 id="43-computational-needs-infrastructure">4.3 Computational Needs &amp; Infrastructure</h3>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Specification</th>
+<th>Cost Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Training Infrastructure</strong></td>
+<td>GPU cluster (4x A100) for initial training</td>
+<td>$8,000/month (cloud)</td>
+</tr>
+<tr>
+<td><strong>Inference Infrastructure</strong></td>
+<td>CPU-based for most; GPU for AI assistant</td>
+<td>$3,000/month</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td>10TB initial; 50TB growth</td>
+<td>$500/month</td>
+</tr>
+<tr>
+<td><strong>LLM API</strong></td>
+<td>OpenAI/Anthropic API for assistant</td>
+<td>$2,000-5,000/month</td>
+</tr>
+<tr>
+<td><strong>Total (Cloud)</strong></td>
+<td></td>
+<td>~$15,000/month</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Infrastructure Recommendation:</strong> Hybrid approach<br />
+- Cloud (AWS/GCP) for development and scaling flexibility<br />
+- On-premise option for sensitive financial data (OJK compliance)</p>
+<h3 id="44-integration-challenges">4.4 Integration Challenges</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Complexity</th>
+<th>Challenge</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Legacy ERPs (40+)</strong></td>
+<td>High</td>
+<td>Diverse systems; outdated APIs</td>
+<td>Phased integration; API gateway; data connectors</td>
+</tr>
+<tr>
+<td><strong>Core Banking</strong></td>
+<td>High</td>
+<td>Real-time requirements; security</td>
+<td>Dedicated secure channel; batch processing option</td>
+</tr>
+<tr>
+<td><strong>HR Systems</strong></td>
+<td>Medium</td>
+<td>Fragmented across entities</td>
+<td>Standard data model; manual upload fallback</td>
+</tr>
+<tr>
+<td><strong>Regulatory Sources</strong></td>
+<td>Medium</td>
+<td>No official API; PDF-heavy</td>
+<td>OCR pipeline; manual update process</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-hypothesis-validation">5. Hypothesis Validation</h2>
+<h3 id="51-key-hypotheses-validation">5.1 Key Hypotheses &amp; Validation</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Hypothesis</th>
+<th>Category</th>
+<th>Validation Method</th>
+<th>Success Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>H1</strong></td>
+<td>Compliance officers spend 60%+ time on manual documentation</td>
+<td>User Need</td>
+<td>Survey + time tracking study</td>
+<td>&gt;50% confirm; baseline established</td>
+</tr>
+<tr>
+<td><strong>H2</strong></td>
+<td>AI can detect SOP deviations with &gt;90% accuracy</td>
+<td>Technical</td>
+<td>POC with historical data</td>
+<td>Precision &gt;90%, Recall &gt;85%</td>
+</tr>
+<tr>
+<td><strong>H3</strong></td>
+<td>Indonesian regulatory PDFs can be processed with &gt;85% accuracy</td>
+<td>Technical</td>
+<td>OCR benchmark test</td>
+<td>Character accuracy &gt;85%</td>
+</tr>
+<tr>
+<td><strong>H4</strong></td>
+<td>Users will adopt AI assistant for compliance questions</td>
+<td>User Need</td>
+<td>Beta test with 50 users</td>
+<td>&gt;70% weekly active usage</td>
+</tr>
+<tr>
+<td><strong>H5</strong></td>
+<td>Human-in-the-loop workflow acceptable to management</td>
+<td>Market</td>
+<td>Executive interviews</td>
+<td>&gt;80% approval from compliance heads</td>
+</tr>
+<tr>
+<td><strong>H6</strong></td>
+<td>ROI achievable within 12 months</td>
+<td>Market</td>
+<td>Financial modeling + pilot metrics</td>
+<td>Cost avoidance &gt; implementation cost</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-validation-timeline">5.2 Validation Timeline</h3>
+<pre><code>Week 1-4          Week 5-8          Week 9-12         Week 13-16
+    │                 │                 │                 │
+    ▼                 ▼                 ▼                 ▼
+[Market Research   [Technical POC    [User Beta        [Synthesis &amp;
+ H1, H5, H6]        H2, H3]           H4]               Go/No-Go]
+
+Activities:        Activities:        Activities:        Activities:
+- Stakeholder      - OCR accuracy     - 50-user pilot   - Consolidate
+  interviews         test             - Usage tracking    findings
+- Time study       - Deviation        - Feedback        - ROI validation
+- Financial          detection POC      surveys         - Executive
+  modeling         - LLM+RAG test                         presentation
+</code></pre>
+<hr />
+<h1 id="part-2-high-level-project-plan-simple-prd_1">PART 2: HIGH-LEVEL PROJECT PLAN &amp; SIMPLE PRD</h1>
+<hr />
+<h2 id="6-project-plan-approach">6. Project Plan Approach</h2>
+<h3 id="61-strategic-alignment">6.1 Strategic Alignment</h3>
+<table>
+<thead>
+<tr>
+<th>SQE Strategic Goal</th>
+<th>How This Project Aligns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Digital Transformation</strong></td>
+<td>Transforms manual compliance processes into AI-powered automation; positions SQE as AI leader within Sinar Mas</td>
+</tr>
+<tr>
+<td><strong>Market Leadership</strong></td>
+<td>First-mover advantage in Indonesian RegTech; builds competitive moat through local regulatory intelligence</td>
+</tr>
+<tr>
+<td><strong>Revenue Growth</strong></td>
+<td>Internal budget allocation from 40+ subsidiaries; future external monetization; cross-pillar expansion to Mining</td>
+</tr>
+<tr>
+<td><strong>Operational Excellence</strong></td>
+<td>Reduces compliance FTE effort by 30%; prevents costly regulatory fines; improves audit readiness</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-key-milestones-timeline">6.2 Key Milestones &amp; Timeline</h3>
+<p><strong>Visual Timeline (18-24 Months):</strong></p>
+<pre><code>Month 1-6        Month 7-12       Month 13-18      Month 19-24
+    │                │                │                │
+    ▼                ▼                ▼                ▼
+┌────────┐      ┌────────┐      ┌────────┐      ┌────────┐
+│ Phase 1│ ──►  │ Phase 2│ ──►  │ Phase 3│ ──►  │ Phase 4│
+│  MVP   │      │ Pilot  │      │ Rollout│      │ Expand │
+└────────┘      └────────┘      └────────┘      └────────┘
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Key Deliverables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phase 1: MVP Development</strong></td>
+<td>Month 1-6</td>
+<td>Core platform; Dashboard; AI Assistant (basic); SQE internal pilot</td>
+</tr>
+<tr>
+<td><strong>Phase 2: Pilot &amp; Validation</strong></td>
+<td>Month 7-12</td>
+<td>Human-in-loop modules; One SMMA subsidiary pilot; ROI validation</td>
+</tr>
+<tr>
+<td><strong>Phase 3: SMMA Rollout</strong></td>
+<td>Month 13-18</td>
+<td>Full SMMA deployment; Cross-entity benchmarking; 3-month UAT buffer</td>
+</tr>
+<tr>
+<td><strong>Phase 4: Expansion</strong></td>
+<td>Month 19-24</td>
+<td>Mining pillar (GEMS/DSSA); External monetization exploration</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Milestones:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Milestone</th>
+<th>Target</th>
+<th>Success Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1: MVP Launch</td>
+<td>Month 6</td>
+<td>Dashboard + AI Assistant functional; 80% SQE SOPs digitized</td>
+</tr>
+<tr>
+<td>M2: Pilot Complete</td>
+<td>Month 12</td>
+<td>50% audit time reduction; Zero missed deadlines; 90% adoption</td>
+</tr>
+<tr>
+<td>M3: SMMA Rollout</td>
+<td>Month 18</td>
+<td>20+ subsidiaries live; Cross-entity benchmarking operational</td>
+</tr>
+<tr>
+<td>M4: Mining Pilot</td>
+<td>Month 24</td>
+<td>GEMS/DSSA pilot launched; Environmental compliance module</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-key-stakeholders">6.3 Key Stakeholders</h3>
+<p><strong>Internal:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Stakeholder</th>
+<th>Role</th>
+<th>Engagement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SMMA C-Level</strong></td>
+<td>Executive Sponsor</td>
+<td>Monthly steering committee; budget approval</td>
+</tr>
+<tr>
+<td><strong>SQE Leadership</strong></td>
+<td>Product Owner</td>
+<td>Weekly reviews; resource allocation</td>
+</tr>
+<tr>
+<td><strong>Engineering Team</strong></td>
+<td>Builder</td>
+<td>Daily standups; sprint planning</td>
+</tr>
+<tr>
+<td><strong>Compliance Officers</strong></td>
+<td>Domain Expert + User</td>
+<td>Requirements validation; beta testing</td>
+</tr>
+<tr>
+<td><strong>Legal/Compliance</strong></td>
+<td>Reviewer</td>
+<td>Regulatory alignment; PDP Law compliance</td>
+</tr>
+</tbody>
+</table>
+<p><strong>External:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Stakeholder</th>
+<th>Role</th>
+<th>Engagement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pilot Subsidiary</strong></td>
+<td>First customer</td>
+<td>Co-development; feedback loop</td>
+</tr>
+<tr>
+<td><strong>OJK/BI/MOE</strong></td>
+<td>Regulators</td>
+<td>Compliance validation; potential partnership</td>
+</tr>
+<tr>
+<td><strong>LLM Providers</strong></td>
+<td>Technology partner</td>
+<td>API integration; SLA management</td>
+</tr>
+<tr>
+<td><strong>Auditors (External)</strong></td>
+<td>Validator</td>
+<td>Audit trail requirements; acceptance testing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="64-metrics-of-success">6.4 Metrics of Success</h3>
+<p><strong>AI Performance:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deviation Detection Accuracy</td>
+<td>95%+ precision</td>
+</tr>
+<tr>
+<td>Deviation Detection Recall</td>
+<td>90%+ recall</td>
+</tr>
+<tr>
+<td>AI Assistant Response Accuracy</td>
+<td>90%+ (RAG-grounded)</td>
+</tr>
+<tr>
+<td>Response Latency</td>
+<td>&lt; 3 seconds (dashboard); &lt; 5 seconds (AI assistant)</td>
+</tr>
+<tr>
+<td>False Positive Rate</td>
+<td>&lt; 10%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Business Impact:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Baseline</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Audit Preparation Time</td>
+<td>~4 weeks</td>
+<td>&lt; 1 week (70% reduction)</td>
+</tr>
+<tr>
+<td>Compliance FTE Effort</td>
+<td>100% (current)</td>
+<td>70% (30% reduction)</td>
+</tr>
+<tr>
+<td>Missed Compliance Deadlines</td>
+<td>X per year</td>
+<td>Zero</td>
+</tr>
+<tr>
+<td>Potential Fines Avoided</td>
+<td>N/A</td>
+<td>Rp 10B+ exposure reduction</td>
+</tr>
+<tr>
+<td>User Adoption</td>
+<td>N/A</td>
+<td>90% monthly active users</td>
+</tr>
+<tr>
+<td>NPS Score</td>
+<td>N/A</td>
+<td>40+</td>
+</tr>
+<tr>
+<td>ROI</td>
+<td>N/A</td>
+<td>5:1 within 12 months</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-simple-prd-core-ai-feature">7. Simple PRD - Core AI Feature</h2>
+<blockquote>
+<p><strong>Focus:</strong> Real-Time Deviation Detection &amp; Alert System</p>
+</blockquote>
+<h3 id="71-feature-overview">7.1 Feature Overview</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Feature Name</strong></td>
+<td>Real-Time Deviation Detection &amp; Alert System</td>
+</tr>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Continuously monitor operational processes and detect compliance deviations before they become violations</td>
+</tr>
+<tr>
+<td><strong>User Problem</strong></td>
+<td>Compliance issues are discovered during audits (reactive), not before - leading to fines, remediation costs, and operational disruption</td>
+</tr>
+<tr>
+<td><strong>Target User</strong></td>
+<td>Compliance Officers, Department Managers, C-Level Executives</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72-acceptance-criteria">7.2 Acceptance Criteria</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Criteria (Given/When/Then)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AC-1</strong></td>
+<td>Given a process/transaction occurs, When AI detects deviation from SOP, Then system generates alert within 5 minutes with severity level and confidence score</td>
+</tr>
+<tr>
+<td><strong>AC-2</strong></td>
+<td>Given an alert is generated, When confidence &lt; 85%, Then alert is automatically escalated to human review queue</td>
+</tr>
+<tr>
+<td><strong>AC-3</strong></td>
+<td>Given an alert is generated, When user clicks "Explain", Then AI provides reasoning using SHAP/LIME methodology with cited SOP references</td>
+</tr>
+<tr>
+<td><strong>AC-4</strong></td>
+<td>Given multiple alerts exist, When Compliance Officer views dashboard, Then alerts are prioritized by risk score (severity × confidence × business impact)</td>
+</tr>
+<tr>
+<td><strong>AC-5</strong></td>
+<td>Given alert is reviewed, When user takes action (acknowledge/escalate/dismiss), Then decision is logged in immutable audit trail with timestamp and user ID</td>
+</tr>
+<tr>
+<td><strong>AC-6</strong></td>
+<td>Given user dismisses alert as false positive, When feedback is submitted, Then system logs feedback for model improvement</td>
+</tr>
+</tbody>
+</table>
+<h3 id="73-key-ai-driven-functionality">7.3 Key AI-Driven Functionality</h3>
+<p><strong>How AI Works (User Perspective):</strong></p>
+<pre><code>┌──────────────────┐      ┌──────────────────┐      ┌──────────────────┐
+│  PROCESS OCCURS  │ ──►  │   AI MONITORS    │ ──►  │  ALERT GENERATED │
+│  (Transaction,   │      │  (Compare to SOP │      │  (Severity,      │
+│   Document, etc) │      │   &amp; Regulations) │      │   Confidence,    │
+└──────────────────┘      └──────────────────┘      │   Explanation)   │
+                                                     └──────────────────┘
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>User Action</th>
+<th>AI Response</th>
+<th>User Sees</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Normal work (transaction, document upload)</td>
+<td>AI continuously monitors against SOP rules</td>
+<td>Nothing (seamless)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>-</td>
+<td>AI detects potential deviation</td>
+<td>Alert notification with severity badge</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Click alert to view details</td>
+<td>AI retrieves context and generates explanation</td>
+<td>Alert card: what happened, why flagged, confidence %</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Click "Explain"</td>
+<td>SHAP/LIME analysis + RAG retrieval</td>
+<td>Visual explanation: "This was flagged because X exceeds threshold Y per SOP Z"</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Take action (Acknowledge/Escalate/Dismiss)</td>
+<td>Log decision; update model if feedback provided</td>
+<td>Confirmation; audit trail entry</td>
+</tr>
+</tbody>
+</table>
+<p><strong>AI Decision Transparency:</strong></p>
+<p>Every alert includes:<br />
+- <strong>What:</strong> Description of the detected deviation<br />
+- <strong>Why:</strong> AI reasoning with SHAP/LIME feature importance<br />
+- <strong>Source:</strong> Cited SOP section and regulatory reference<br />
+- <strong>Confidence:</strong> Percentage score (triggers human review if &lt; 85%)<br />
+- <strong>Recommended Action:</strong> AI-suggested next steps</p>
+<h3 id="74-high-level-ai-technical-considerations">7.4 High-Level AI Technical Considerations</h3>
+<p><strong>Data Feeds:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Source</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Process/Transaction Logs</td>
+<td>ERP systems, Core Banking</td>
+<td>Real-time streaming</td>
+</tr>
+<tr>
+<td>Document Uploads</td>
+<td>Document management system</td>
+<td>Event-triggered</td>
+</tr>
+<tr>
+<td>SOP Rules</td>
+<td>COMPAS Rules Engine</td>
+<td>Cached; updated on SOP changes</td>
+</tr>
+<tr>
+<td>Regulatory Requirements</td>
+<td>Regulatory DB + Knowledge Graph</td>
+<td>Daily sync</td>
+</tr>
+<tr>
+<td>Historical Decisions</td>
+<td>Audit Trail</td>
+<td>Batch (model retraining)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Core AI Approach:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Approach</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rule Matching</strong></td>
+<td>Rule-based engine</td>
+<td>Deterministic; high accuracy for known rules; explainable</td>
+</tr>
+<tr>
+<td><strong>Anomaly Detection</strong></td>
+<td>Isolation Forest + Autoencoder</td>
+<td>Catches unknown deviations; learns from data</td>
+</tr>
+<tr>
+<td><strong>Severity Classification</strong></td>
+<td>Gradient Boosting (XGBoost)</td>
+<td>Proven accuracy; feature importance for explainability</td>
+</tr>
+<tr>
+<td><strong>Explainability</strong></td>
+<td>SHAP (global) + LIME (local)</td>
+<td>Industry standard; regulatory acceptance</td>
+</tr>
+<tr>
+<td><strong>RAG for Context</strong></td>
+<td>LLM + Vector DB (Pinecone/Weaviate)</td>
+<td>Grounds explanations in actual SOP text; prevents hallucination</td>
+</tr>
+</tbody>
+</table>
+<p><strong>AI Pipeline:</strong></p>
+<pre><code>┌─────────────┐   ┌─────────────┐   ┌─────────────┐   ┌─────────────┐
+│ Data Input  │──►│ Rule Check  │──►│ ML Scoring  │──►│ Alert Gen   │
+│ (Streaming) │   │ (Deterministic)│ │ (Confidence)│   │ (Priority)  │
+└─────────────┘   └─────────────┘   └─────────────┘   └─────────────┘
+                                           │
+                                           ▼
+                                    ┌─────────────┐
+                                    │ SHAP/LIME   │
+                                    │ Explanation │
+                                    └─────────────┘
+</code></pre>
+<h3 id="75-negative-cases-ai-failure-modes-mitigation">7.5 Negative Cases (AI Failure Modes) &amp; Mitigation</h3>
+<table>
+<thead>
+<tr>
+<th>Failure Mode</th>
+<th>Impact</th>
+<th>Probability</th>
+<th>Mitigation</th>
+<th>Fallback</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>False Positive (Alert Fatigue)</strong></td>
+<td>Medium - Users ignore alerts; miss real issues</td>
+<td>Medium</td>
+<td>Confidence threshold tuning; user feedback loop; weekly false positive review</td>
+<td>Allow users to mark false positives; auto-suppress repeat false positives after review</td>
+</tr>
+<tr>
+<td><strong>False Negative (Missed Violation)</strong></td>
+<td>High - Actual compliance breach goes undetected</td>
+<td>Low</td>
+<td>Conservative thresholds; regular model validation against known cases; parallel manual sampling</td>
+<td>Periodic random audit of transactions not flagged; human spot-checks</td>
+</tr>
+<tr>
+<td><strong>Model Drift</strong></td>
+<td>Medium - Accuracy degrades over time</td>
+<td>Medium</td>
+<td>Automated drift monitoring; scheduled quarterly retraining; version control</td>
+<td>Alert when accuracy drops below threshold; automatic rollback to previous model</td>
+</tr>
+<tr>
+<td><strong>Explanation Hallucination</strong></td>
+<td>High - AI cites non-existent SOP or gives wrong reasoning</td>
+<td>Low</td>
+<td>RAG architecture grounds all explanations in actual documents; confidence scoring</td>
+<td>All explanations include source links; users can verify; low-confidence explanations flagged</td>
+</tr>
+</tbody>
+</table>
+<h3 id="76-quality-measurement">7.6 Quality Measurement</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Measurement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Precision</strong></td>
+<td>&gt; 95%</td>
+<td>TP / (TP + FP) - Weekly evaluation against labeled data</td>
+</tr>
+<tr>
+<td><strong>Recall</strong></td>
+<td>&gt; 90%</td>
+<td>TP / (TP + FN) - Monthly audit of undetected violations</td>
+</tr>
+<tr>
+<td><strong>F1 Score</strong></td>
+<td>&gt; 0.92</td>
+<td>Harmonic mean of precision and recall</td>
+</tr>
+<tr>
+<td><strong>Alert Response Time</strong></td>
+<td>&lt; 5 minutes</td>
+<td>Time from event to alert generation</td>
+</tr>
+<tr>
+<td><strong>Explanation Accuracy</strong></td>
+<td>&gt; 90%</td>
+<td>Human evaluation of explanation correctness (sample)</td>
+</tr>
+<tr>
+<td><strong>User Satisfaction</strong></td>
+<td>&gt; 4.0/5.0</td>
+<td>Post-action survey; monthly NPS</td>
+</tr>
+<tr>
+<td><strong>False Positive Rate</strong></td>
+<td>&lt; 10%</td>
+<td>User-reported false positives / total alerts</td>
+</tr>
+</tbody>
+</table>
+<h3 id="77-non-functional-requirements-ai-specific">7.7 Non-Functional Requirements (AI-Specific)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>OJK data handling requirements; PDP Law 2023 (consent, data minimization, retention limits); ISO 27001 alignment</td>
+</tr>
+<tr>
+<td><strong>Explainability</strong></td>
+<td>SHAP/LIME for all ML decisions; Confidence scoring (0-100%); Source citation for all explanations</td>
+</tr>
+<tr>
+<td><strong>Auditability</strong></td>
+<td>7-year log retention; Immutable audit trail; Model versioning with decision lineage; Who-what-when-why for every alert action</td>
+</tr>
+<tr>
+<td><strong>Latency</strong></td>
+<td>Dashboard load &lt; 3 seconds; Alert generation &lt; 5 minutes from event; AI explanation &lt; 3 seconds</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>AES-256 encryption at rest; TLS 1.3 in transit; RBAC with entity-level isolation; PII masking in logs</td>
+</tr>
+<tr>
+<td><strong>Availability</strong></td>
+<td>99.9% uptime SLA; RTO &lt; 4 hours; RPO &lt; 1 hour; Active-passive failover</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-screen-inventory-sampling">8. Screen Inventory (Sampling)</h2>
+<blockquote>
+<p><em>Screenshot/mockup untuk fitur utama</em></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Screen</th>
+<th>Description</th>
+<th>Screenshot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Executive Dashboard</strong></td>
+<td>C-Level single view with risk heatmap, financial exposure ticker, regulatory countdown</td>
+<td><img alt="Dashboard" src="file:///C:/Kerja/SQE/compas-app/screenshots/01-dashboard-light.png" /></td>
+</tr>
+<tr>
+<td><strong>Alert Management</strong></td>
+<td>Real-time deviation alerts with severity, confidence, and AI explanation</td>
+<td><img alt="Alerts" src="file:///C:/Kerja/SQE/compas-app/screenshots/02-alerts-light.png" /></td>
+</tr>
+<tr>
+<td><strong>Compliance Engagement</strong></td>
+<td>Personal compliance score, achievements, training modules</td>
+<td><img alt="Gamification" src="file:///C:/Kerja/SQE/compas-app/screenshots/03-gamification-light.png" /></td>
+</tr>
+<tr>
+<td><strong>AI Assistant</strong></td>
+<td>Natural language compliance Q&amp;A in Bahasa Indonesia</td>
+<td><img alt="AI Assistant" src="file:///C:/Kerja/SQE/compas-app/screenshots/04-ai-assistant-light.png" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="enterprise-architecture-overview">Enterprise Architecture Overview</h3>
+<p><img alt="COMPAS Enterprise Architecture" src="file:///C:/Kerja/SQE/compas_ea.png" /></p>
+<p><em>5-Layer Architecture: Channel &amp; Experience → Application &amp; Services → Integration → Data &amp; Storage → Governance &amp; Security</em></p>
+<h3 id="role-based-access">Role-Based Access</h3>
+<p><img alt="COMPAS User Roles" src="file:///C:/Kerja/SQE/compas_ea_users.png" /></p>
+<p><em>Role access matrix showing permissions for C-Level, Compliance Officers, Managers, Employees, and Auditors</em></p>
+<hr />
+<h2 id="appendix">Appendix</h2>
+<h3 id="a-glossary">A. Glossary</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>COMPAS</strong></td>
+<td>Compliance Process Automation Service</td>
+</tr>
+<tr>
+<td><strong>RAG</strong></td>
+<td>Retrieval-Augmented Generation - AI architecture that grounds LLM responses in retrieved documents</td>
+</tr>
+<tr>
+<td><strong>SHAP</strong></td>
+<td>SHapley Additive exPlanations - Method to explain ML model predictions</td>
+</tr>
+<tr>
+<td><strong>LIME</strong></td>
+<td>Local Interpretable Model-agnostic Explanations - Method to explain individual predictions</td>
+</tr>
+<tr>
+<td><strong>SOP</strong></td>
+<td>Standard Operating Procedure</td>
+</tr>
+<tr>
+<td><strong>OJK</strong></td>
+<td>Otoritas Jasa Keuangan (Financial Services Authority of Indonesia)</td>
+</tr>
+<tr>
+<td><strong>BI</strong></td>
+<td>Bank Indonesia (Central Bank)</td>
+</tr>
+<tr>
+<td><strong>MOE</strong></td>
+<td>Ministry of Environment</td>
+</tr>
+<tr>
+<td><strong>PDP Law</strong></td>
+<td>Personal Data Protection Law (UU PDP 2023)</td>
+</tr>
+<tr>
+<td><strong>SMMA</strong></td>
+<td>Sinar Mas Multiartha (Financial Services pillar)</td>
+</tr>
+<tr>
+<td><strong>GRC</strong></td>
+<td>Governance, Risk, and Compliance</td>
+</tr>
+<tr>
+<td><strong>RegTech</strong></td>
+<td>Regulatory Technology</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b-references">B. References</h3>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EXECUTIVE_VISION.md</td>
+<td>Original product vision document</td>
+</tr>
+<tr>
+<td>AI_REVIEW_SESSION.md</td>
+<td>AI peer review feedback (DeepSeek, Qwen, Grok)</td>
+</tr>
+<tr>
+<td>compas_ea.html</td>
+<td>Enterprise architecture visualization</td>
+</tr>
+<tr>
+<td>COMPAS_FLOWCHARTS.html</td>
+<td>Detailed process flowcharts</td>
+</tr>
+<tr>
+<td>[SQE] PM AI_Case Study_Updated.pdf</td>
+<td>Case study requirements</td>
+</tr>
+</tbody>
+</table>
+<h3 id="c-revision-history">C. Revision History</h3>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>Dec 2024</td>
+<td>Banat Zata</td>
+<td>Initial draft</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>Dec 2024</td>
+<td>Banat Zata</td>
+<td>Incorporated AI review feedback</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>Dec 2024</td>
+<td>Banat Zata</td>
+<td>Final version for case study submission</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>"Be the golden bridge that people want to pass and could pass to make their lives and activities easier."</em></p>
+<p><strong>— Tata</strong></p>
+<hr />
+<p><em>COMPAS PRD v1.0 | December 2024 | Prepared for SQE Senior Product Manager - AI &amp; Enterprise Solutions Case Study</em></p>
+</body>
+</html>

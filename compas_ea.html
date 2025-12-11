@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>COMPAS Enterprise Architecture</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #f1f5f9;
+            color: #111827;
+            font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+            padding: 32px 24px 40px 24px;
+        }
+        .page {
+            max-width: 1280px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #ffffff;
+            box-shadow: 0 25px 80px rgba(15,23,42,0.15);
+            border: 1px solid rgba(209,213,219,0.8);
+        }
+        .page-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            padding: 28px 40px 24px 40px;
+            text-align: center;
+        }
+        .page-title {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        .page-subtitle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.85);
+            font-weight: 500;
+        }
+        .page-tagline {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 8px;
+            font-style: italic;
+        }
+        .content {
+            padding: 24px 32px 32px 32px;
+        }
+        .legend {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .legend-left {
+            font-size: 11px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .legend-right {
+            font-size: 11px;
+            color: #9ca3af;
+        }
+        .layer-row {
+            display: grid;
+            grid-template-columns: 200px minmax(0, 1fr);
+            gap: 12px;
+            align-items: stretch;
+            margin-bottom: 14px;
+        }
+        .layer-label {
+            border-radius: 10px;
+            padding: 16px 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(15,23,42,0.2);
+        }
+        .layer-label-main {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            line-height: 1.4;
+            text-align: center;
+        }
+        .layer-body {
+            border-radius: 10px;
+            padding: 14px 16px;
+            border: 1px solid rgba(209,213,219,0.7);
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 12px 14px;
+            min-width: 180px;
+            flex: 1 1 200px;
+            max-width: 250px;
+            box-shadow: 0 2px 8px rgba(148,163,184,0.3);
+            border: 1px solid rgba(209,213,219,0.8);
+        }
+        .card-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+        .card-desc {
+            font-size: 10px;
+            color: #64748b;
+            line-height: 1.4;
+        }
+        .footer {
+            text-align: center;
+            padding: 16px 32px;
+            background: #f8fafc;
+            border-top: 1px solid #e5e7eb;
+        }
+        .footer-text {
+            font-size: 11px;
+            color: #9ca3af;
+        }
+        .footer-quote {
+            font-size: 11px;
+            color: #6b7280;
+            font-style: italic;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <header class="page-header">
+            <div class="page-title">COMPAS</div>
+            <div class="page-subtitle">Compliance Process Automation Service</div>
+            <div class="page-tagline">Enterprise Architecture Overview — Sinar Mas Group</div>
+        </header>
+        <div class="content">
+            <div class="legend">
+                <div class="legend-left">5-Layer Architecture Model</div>
+                <div class="legend-right">Based on Executive Vision + AI Review Recommendations</div>
+            </div>
+            
+        <section class="layer-row">
+            <div class="layer-label" style="background:#3b82f6; color:#ffffff;">
+                <div class="layer-label-main">Channel &amp; Experience Layer</div>
+            </div>
+            <div class="layer-body" style="background:#ebf2fe;">
+                <div class="cards">
+                    
+                <div class="card">
+                    <div class="card-title">Intelligent Risk Dashboard</div>
+                    <div class="card-desc">C-Level single view, Risk Heatmap, Financial Exposure Ticker</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Web Portal</div>
+                    <div class="card-desc">Desktop/Mobile browser access</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">AI Compliance Assistant</div>
+                    <div class="card-desc">Natural language Q&amp;A in Bahasa Indonesia, 24/7</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Gamified Learning Platform</div>
+                    <div class="card-desc">Compliance Engagement Framework, Duolingo-style</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Mobile App</div>
+                    <div class="card-desc">Real-time alerts, Quick quiz, SOP access</div>
+                </div>
+            
+                </div>
+            </div>
+        </section>
+        
+        <section class="layer-row">
+            <div class="layer-label" style="background:#8b5cf6; color:#ffffff;">
+                <div class="layer-label-main">Application &amp; Services Layer</div>
+            </div>
+            <div class="layer-body" style="background:#f3eefe;">
+                <div class="cards">
+                    
+                <div class="card">
+                    <div class="card-title">Account &amp; Auth Module</div>
+                    <div class="card-desc">SSO, RBAC, Multi-entity access</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Real-Time Deviation Detection</div>
+                    <div class="card-desc">AI monitoring, Confidence scoring, SHAP/LIME explainability</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Regulatory Auto-Adapt Engine</div>
+                    <div class="card-desc">Change detection, SOP drafting, Staged rollout</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Audit Report Generator</div>
+                    <div class="card-desc">Auto-compile, AI summary, Regulator formats</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Training &amp; Certification Module</div>
+                    <div class="card-desc">NJO Track, SOP Update Challenges</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Human-in-the-Loop Workflow</div>
+                    <div class="card-desc">High-risk alert review, Senior management escalation</div>
+                </div>
+            
+                </div>
+            </div>
+        </section>
+        
+        <section class="layer-row">
+            <div class="layer-label" style="background:#ec4899; color:#ffffff;">
+                <div class="layer-label-main">Integration Layer</div>
+            </div>
+            <div class="layer-body" style="background:#fdecf4;">
+                <div class="cards">
+                    
+                <div class="card">
+                    <div class="card-title">Regulatory Intelligence API</div>
+                    <div class="card-desc">OJK, BI, MOE, SMKP feeds</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Enterprise System Connectors</div>
+                    <div class="card-desc">ERP, Core Banking, Legacy systems</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">OCR-to-Rule Engine</div>
+                    <div class="card-desc">PDF processing, Knowledge Graph</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Inter-Entity Communication</div>
+                    <div class="card-desc">Cross-subsidiary data sharing</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">External Notification Gateway</div>
+                    <div class="card-desc">Email, SMS, Push notifications</div>
+                </div>
+            
+                </div>
+            </div>
+        </section>
+        
+        <section class="layer-row">
+            <div class="layer-label" style="background:#10b981; color:#111827;">
+                <div class="layer-label-main">Data &amp; Storage Layer</div>
+            </div>
+            <div class="layer-body" style="background:#e7f8f2;">
+                <div class="cards">
+                    
+                <div class="card">
+                    <div class="card-title">User &amp; Auth Store</div>
+                    <div class="card-desc">Identity, Roles, Permissions</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Compliance Rules DB</div>
+                    <div class="card-desc">SOPs, Regulations, Mappings</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Audit Trail Store</div>
+                    <div class="card-desc">Immutable logs, 7-year retention</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">ML Model Registry</div>
+                    <div class="card-desc">Version control, Lineage tracking</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Analytics Data Lake</div>
+                    <div class="card-desc">Process logs, Usage metrics, Reports</div>
+                </div>
+            
+                </div>
+            </div>
+        </section>
+        
+        <section class="layer-row">
+            <div class="layer-label" style="background:#f59e0b; color:#111827;">
+                <div class="layer-label-main">Governance &amp; Security Layer</div>
+            </div>
+            <div class="layer-body" style="background:#fef5e6;">
+                <div class="cards">
+                    
+                <div class="card">
+                    <div class="card-title">PDP Law Compliance</div>
+                    <div class="card-desc">Personal Data Protection 2023</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">ISO 27001 / SOC 2</div>
+                    <div class="card-desc">Security standards alignment</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">AI Ethics &amp; Bias Audit</div>
+                    <div class="card-desc">Model fairness, Transparency</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Model Drift Monitoring</div>
+                    <div class="card-desc">Automated retraining triggers</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Rollout/Rollback Controls</div>
+                    <div class="card-desc">Feature flags, Staged deployment</div>
+                </div>
+            
+                </div>
+            </div>
+        </section>
+        
+        </div>
+        <footer class="footer">
+            <div class="footer-text">COMPAS — Making compliance invisible yet omnipresent</div>
+            <div class="footer-quote">"Be the golden bridge that people want to pass and could pass to make their lives and activities easier."</div>
+        </footer>
+    </main>
+</body>
+</html>

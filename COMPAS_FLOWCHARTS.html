@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPAS Flowcharts & High-Level Flows</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #5B21B6;
+            --secondary: #A855F7;
+            --tertiary: #C4B5FD;
+            --accent1: #BAD5F5;
+            --accent2: #A7F3D0;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(91, 33, 182, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header h2 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .header .meta {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .header .version-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
+
+        /* Color Palette Display */
+        .palette-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .palette-section h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .palette-display {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .palette-color {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .color-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .color-box:hover {
+            transform: scale(1.1);
+        }
+
+        .color-label {
+            font-size: 0.75rem;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .color-hex {
+            font-family: monospace;
+            font-size: 0.7rem;
+            color: #666;
+        }
+
+        /* Section Styling */
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            page-break-inside: avoid;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--tertiary);
+        }
+
+        .section-number {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .section-title h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Mermaid Container */
+        .mermaid-container {
+            background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+            border-radius: 15px;
+            padding: 30px;
+            overflow-x: auto;
+            border: 1px solid #e5e7eb;
+        }
+
+        .mermaid {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        .comparison-table tr:hover {
+            background: var(--tertiary);
+        }
+
+        /* Key Changes Box */
+        .key-changes {
+            background: linear-gradient(135deg, var(--accent2) 0%, #D1FAE5 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+            border-left: 5px solid #10B981;
+        }
+
+        .key-changes h4 {
+            color: #065F46;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .key-changes ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .key-changes li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #065F46;
+        }
+
+        .key-changes li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10B981;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .footer .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .footer .author {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            .section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+
+            .header {
+                box-shadow: none;
+            }
+
+            .no-print {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .palette-display {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>COMPAS Flowcharts & High-Level Flows</h1>
+            <h2>Compliance Process Automation Service</h2>
+            <div class="version-badge">Version 2.0 - Revised with AI Peer Review</div>
+            <div class="meta">
+                Berdasarkan EXECUTIVE_VISION.md v2.0<br>
+                Prepared by: Banat Zata (Tata) | December 2024
+            </div>
+        </div>
+
+        <!-- Color Palette -->
+        <div class="palette-section">
+            <h3>Color Palette (p2.png - Purple to Cyan Gradient)</h3>
+            <div class="palette-display">
+                <div class="palette-color">
+                    <div class="color-box" style="background: #5B21B6;"></div>
+                    <span class="color-label">Deep Purple</span>
+                    <span class="color-hex">#5B21B6</span>
+                </div>
+                <div class="palette-color">
+                    <div class="color-box" style="background: #A855F7;"></div>
+                    <span class="color-label">Purple</span>
+                    <span class="color-hex">#A855F7</span>
+                </div>
+                <div class="palette-color">
+                    <div class="color-box" style="background: #C4B5FD;"></div>
+                    <span class="color-label">Lavender</span>
+                    <span class="color-hex">#C4B5FD</span>
+                </div>
+                <div class="palette-color">
+                    <div class="color-box" style="background: #BAD5F5;"></div>
+                    <span class="color-label">Light Blue</span>
+                    <span class="color-hex">#BAD5F5</span>
+                </div>
+                <div class="palette-color">
+                    <div class="color-box" style="background: #A7F3D0;"></div>
+                    <span class="color-label">Cyan/Mint</span>
+                    <span class="color-hex">#A7F3D0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1: High-Level Architecture -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <div class="section-title">
+                    <h3>COMPAS High-Level Architecture Flow</h3>
+                    <p>Data Layer → AI Engine → Application Layer + Governance</p>
+                </div>
+            </div>
+            <div class="mermaid-container">
+                <pre class="mermaid">
+flowchart TB
+    subgraph INPUT["DATA INPUT LAYER"]
+        A1[("Process Logs")]
+        A2[("Documents")]
+        A3[("SOPs")]
+        A4[("Regulatory DB")]
+        A5[("Knowledge Graph")]
+    end
+
+    subgraph AI["AI ENGINE"]
+        B1["NLP/LLM Processing"]
+        B2["RAG System"]
+        B3["Rules Engine"]
+        B4["ML Models"]
+        B5["Explainability<br/>(SHAP/LIME)"]
+        B6["OCR Engine"]
+    end
+
+    subgraph APP["APPLICATION LAYER"]
+        C1["Executive Dashboard"]
+        C2["Alert System"]
+        C3["Report Generator"]
+        C4["AI Assistant"]
+        C5["Learning Platform"]
+    end
+
+    subgraph GOV["GOVERNANCE LAYER"]
+        D1["Human-in-the-Loop<br/>Approval Workflow"]
+        D2["Model Versioning"]
+        D3["Confidence Scoring"]
+        D4["Rollout Controls"]
+        D5["Audit Trail<br/>(7-year retention)"]
+        D6["Bias Audit"]
+    end
+
+    INPUT --> AI
+    AI --> APP
+    APP <--> GOV
+    GOV --> AI
+
+    style INPUT fill:#5B21B6,stroke:#A855F7,color:#fff
+    style AI fill:#A855F7,stroke:#5B21B6,color:#fff
+    style APP fill:#C4B5FD,stroke:#A855F7,color:#333
+    style GOV fill:#A7F3D0,stroke:#5B21B6,color:#333
+                </pre>
+            </div>
+        </div>
+
+        <!-- Section 2: Deviation Detection -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <div class="section-title">
+                    <h3>Real-Time Deviation Detection Flow</h3>
+                    <p>AI monitoring dengan SHAP/LIME explainability dan RAG safeguards</p>
+                </div>
+            </div>
+            <div class="mermaid-container">
+                <pre class="mermaid">
+flowchart TD
+    A["Process/Transaction Occurs"] --> B["AI Continuous Monitoring"]
+    B --> C["Compare Against SOP<br/>& Regulations"]
+    C --> D{"Deviation<br/>Detected?"}
+    D -->|No| E["Log Normal Activity"]
+    D -->|Yes| F["Generate Alert<br/>with Severity & Confidence"]
+    F --> G{"Confidence<br/>Level?"}
+    G -->|High ≥85%| H["Auto-Flag & Notify<br/>Compliance Officer"]
+    G -->|Low <85%| I["Mandatory Escalate<br/>to Human Review"]
+    H --> J["AI Explains Reasoning<br/>(SHAP/LIME + RAG)"]
+    I --> J
+    J --> K["Log in Audit Trail<br/>(Immutable)"]
+
+    style A fill:#5B21B6,stroke:#A855F7,color:#fff
+    style B fill:#A855F7,stroke:#5B21B6,color:#fff
+    style C fill:#A855F7,stroke:#5B21B6,color:#fff
+    style D fill:#BAD5F5,stroke:#5B21B6,color:#333
+    style E fill:#A7F3D0,stroke:#5B21B6,color:#333
+    style F fill:#C4B5FD,stroke:#A855F7,color:#333
+    style G fill:#BAD5F5,stroke:#5B21B6,color:#333
+    style H fill:#C4B5FD,stroke:#A855F7,color:#333
+    style I fill:#A7F3D0,stroke:#5B21B6,color:#333
+    style J fill:#A855F7,stroke:#5B21B6,color:#fff
+    style K fill:#5B21B6,stroke:#A855F7,color:#fff
+                </pre>
+            </div>
+        </div>
+
+        <!-- Section 3: Dynamic Regulatory Adaptation -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <div class="section-title">
+                    <h3>Dynamic Regulatory Adaptation Framework</h3>
+                    <p>RAG-enhanced dengan OCR, Knowledge Graph, dan mandatory Human-in-the-Loop</p>
+                </div>
+            </div>
+            <div class="mermaid-container">
+                <pre class="mermaid">
+flowchart TD
+    A["Regulatory Intelligence Engine<br/>(API to OJK/BI/MOE)"] --> B["OCR-to-Structured Rule<br/>Processing (Indonesian PDFs)"]
+    B --> C["Knowledge Graph<br/>Rule Mapping"]
+    C --> D["AI Impact Analysis<br/>on Current SOPs"]
+    D --> E["RAG-Enhanced<br/>SOP Draft Generation"]
+    E --> F{"AI Confidence<br/>Score ≥ 85%?"}
+    F -->|No| G["Mandatory Human<br/>Review & Edit"]
+    F -->|Yes| H["Human Approval<br/>Still Required"]
+    G --> H
+    H --> I{"Approved?"}
+    I -->|No| J["Revision with<br/>Human Feedback"]
+    J --> E
+    I -->|Yes| K["Staged Rollout<br/>(Test Entity First)"]
+    K --> L["UAT + Pilot Testing<br/>(3-month buffer)"]
+    L --> M["Training Auto-Triggered<br/>for Affected Employees"]
+    M --> N["Grace Period<br/>(30-60 days)"]
+    N --> O["Full Enforcement<br/>+ Continuous Monitoring"]
+    O --> P["Bias Audit &<br/>Model Validation"]
+
+    style A fill:#5B21B6,stroke:#A855F7,color:#fff
+    style B fill:#5B21B6,stroke:#A855F7,color:#fff
+    style C fill:#A855F7,stroke:#5B21B6,color:#fff
+    style D fill:#A855F7,stroke:#5B21B6,color:#fff
+    style E fill:#C4B5FD,stroke:#A855F7,color:#333
+    style F fill:#BAD5F5,stroke:#5B21B6,color:#333
+    style G fill:#A7F3D0,stroke:#5B21B6,color:#333
+    style H fill:#A7F3D0,stroke:#5B21B6,color:#333
+    style I fill:#BAD5F5,stroke:#5B21B6,color:#333
+    style J fill:#A7F3D0,stroke:#5B21B6,color:#333
+    style K fill:#C4B5FD,stroke:#A855F7,color:#333
+    style L fill:#C4B5FD,stroke:#A855F7,color:#333
+    style M fill:#A855F7,stroke:#5B21B6,color:#fff
+    style N fill:#BAD5F5,stroke:#5B21B6,color:#333
+    style O fill:#5B21B6,stroke:#A855F7,color:#fff
+    style P fill:#5B21B6,stroke:#A855F7,color:#fff
+                </pre>
+            </div>
+            <div class="key-changes">
+                <h4>Key Safeguards (dari AI Review)</h4>
+                <ul>
+                    <li>NEVER auto-execute tanpa human approval</li>
+                    <li>RAG system untuk mencegah AI hallucinations</li>
+                    <li>OCR processing untuk Indonesian regulatory PDFs</li>
+                    <li>3-month UAT buffer sebelum full rollout</li>
+                    <li>Bias audit dan model validation berkala</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 4: Human-in-the-Loop Workflow -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <div class="section-title">
+                    <h3>Human-in-the-Loop Approval Workflow</h3>
+                    <p>Risk-based approval paths untuk semua AI decisions</p>
+                </div>
+            </div>
+            <div class="mermaid-container">
+                <pre class="mermaid">
+flowchart TD
+    A["AI Decision/Recommendation<br/>Generated"] --> B{"Risk Level<br/>Assessment"}
+
+    B -->|"Low Risk<br/>(Training, Info)"| C["Auto-Execute<br/>with Logging"]
+    B -->|"Medium Risk<br/>(Alerts, Reports)"| D["Queue for<br/>Compliance Officer Review"]
+    B -->|"High Risk<br/>(SOP Changes)"| E["Mandatory<br/>Sr. Management Approval"]
+
+    C --> F["Log to Audit Trail"]
+
+    D --> G["Compliance Officer<br/>Reviews Queue"]
+    G --> H{"Approve?"}
+    H -->|Yes| I["Execute with<br/>Human Sign-off"]
+    H -->|No| J["Reject with<br/>Feedback to AI"]
+    I --> F
+    J --> K["AI Model<br/>Feedback Loop"]
+
+    E --> L["Senior Management<br/>Escalation"]
+    L --> M["Multi-Level<br/>Approval Workflow"]
+    M --> N{"All Approvals<br/>Received?"}
+    N -->|Yes| O["Execute with<br/>Full Audit Trail"]
+    N -->|No| P["Pending/Revision<br/>Required"]
+    O --> F
+    P --> E
+
+    style A fill:#5B21B6,stroke:#A855F7,color:#fff
+    style B fill:#BAD5F5,stroke:#5B21B6,color:#333
+    style C fill:#C4B5FD,stroke:#A855F7,color:#333
+    style D fill:#A855F7,stroke:#5B21B6,color:#fff
+    style E fill:#A7F3D0,stroke:#5B21B6,color:#333
+    style F fill:#5B21B6,stroke:#A855F7,color:#fff
+    style G fill:#A855F7,stroke:#5B21B6,color:#fff
+    style H fill:#BAD5F5,stroke:#5B21B6,color:#333
+    style I fill:#C4B5FD,stroke:#A855F7,color:#333
+    style J fill:#A7F3D0,stroke:#5B21B6,color:#333
+    style K fill:#A855F7,stroke:#5B21B6,color:#fff
+    style L fill:#A7F3D0,stroke:#5B21B6,color:#333
+    style M fill:#A7F3D0,stroke:#5B21B6,color:#333
+    style N fill:#BAD5F5,stroke:#5B21B6,color:#333
+    style O fill:#5B21B6,stroke:#A855F7,color:#fff
+    style P fill:#C4B5FD,stroke:#A855F7,color:#333
+                </pre>
+            </div>
+        </div>
+
+        <!-- Section 5: Contextual Compliance Engagement -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <div class="section-title">
+                    <h3>Contextual Compliance Engagement Framework</h3>
+                    <p>Risk-based engagement respecting Indonesian corporate culture</p>
+                </div>
+            </div>
+            <div class="mermaid-container">
+                <pre class="mermaid">
+flowchart TD
+    A["Compliance Task/Alert<br/>Generated"] --> B{"Risk Level<br/>Assessment"}
+
+    B -->|Low Risk| C["Light Engagement Track"]
+    B -->|Medium Risk| D["Standard Workflow"]
+    B -->|High Risk| E["Mandatory Workflow Track"]
+
+    C --> C1["Training Modules"]
+    C1 --> C2["Points & Achievements"]
+    C2 --> C3["Team Benchmarking"]
+
+    D --> D1["Guided Process"]
+    D1 --> D2["Checklist & Alerts"]
+
+    E --> E1["Compulsory Rule-Based<br/>Workflow"]
+    E1 --> E2["Senior Management<br/>Escalation"]
+    E2 --> E3["Sign-off Required"]
+    E3 --> E4["Full Audit Trail"]
+
+    C3 --> F["Update Personal<br/>Compliance Score"]
+    D2 --> F
+    E4 --> F
+    F --> G["Link to Real-World KPIs:<br/>'Risk Exposure Reduced by X%'"]
+    G --> H["Local-Centric Incentives<br/>(Indonesian Corporate Culture)"]
+
+    style A fill:#5B21B6,stroke:#A855F7,color:#fff
+    style B fill:#BAD5F5,stroke:#5B21B6,color:#333
+    style C fill:#C4B5FD,stroke:#A855F7,color:#333
+    style C1 fill:#C4B5FD,stroke:#A855F7,color:#333
+    style C2 fill:#C4B5FD,stroke:#A855F7,color:#333
+    style C3 fill:#C4B5FD,stroke:#A855F7,color:#333
+    style D fill:#A855F7,stroke:#5B21B6,color:#fff
+    style D1 fill:#A855F7,stroke:#5B21B6,color:#fff
+    style D2 fill:#A855F7,stroke:#5B21B6,color:#fff
+    style E fill:#A7F3D0,stroke:#5B21B6,color:#333
+    style E1 fill:#A7F3D0,stroke:#5B21B6,color:#333
+    style E2 fill:#A7F3D0,stroke:#5B21B6,color:#333
+    style E3 fill:#A7F3D0,stroke:#5B21B6,color:#333
+    style E4 fill:#A7F3D0,stroke:#5B21B6,color:#333
+    style F fill:#5B21B6,stroke:#A855F7,color:#fff
+    style G fill:#5B21B6,stroke:#A855F7,color:#fff
+    style H fill:#5B21B6,stroke:#A855F7,color:#fff
+                </pre>
+            </div>
+        </div>
+
+        <!-- Section 6: Data Strategy & ETL -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">6</div>
+                <div class="section-title">
+                    <h3>Data Strategy & ETL Pipeline</h3>
+                    <p>Full data pipeline dengan PDP Law 2023 compliance</p>
+                </div>
+            </div>
+            <div class="mermaid-container">
+                <pre class="mermaid">
+flowchart TD
+    subgraph SOURCE["DATA SOURCES"]
+        A1["Legacy ERP Systems<br/>(40+ Subsidiaries)"]
+        A2["Regulatory PDFs<br/>(OJK/BI/MOE)"]
+        A3["Process Logs<br/>& Transactions"]
+        A4["Documents & SOPs"]
+    end
+
+    subgraph ETL["ETL PIPELINE"]
+        B1["Data Extraction<br/>Connectors (API/File/DB)"]
+        B2["OCR Processing<br/>(Indonesian Regulations)"]
+        B3["Data Cleaning<br/>& Normalization"]
+        B4["Synthetic Data<br/>Generation (Testing)"]
+    end
+
+    subgraph STORAGE["DATA LAKE"]
+        C1["Structured Rules DB"]
+        C2["Knowledge Graph<br/>(Regulatory Rules)"]
+        C3["Audit Logs<br/>(Immutable)"]
+        C4["Training Data<br/>for AI Models"]
+    end
+
+    subgraph GOVERNANCE["DATA GOVERNANCE"]
+        D1["PDP Law 2023<br/>Compliance"]
+        D2["Role-Based<br/>Access Control"]
+        D3["Data Encryption<br/>(Rest & Transit)"]
+        D4["7-Year Retention<br/>Policy"]
+        D5["Data Residency<br/>(OJK Requirements)"]
+    end
+
+    SOURCE --> ETL
+    ETL --> STORAGE
+    STORAGE <--> GOVERNANCE
+
+    style SOURCE fill:#5B21B6,stroke:#A855F7,color:#fff
+    style ETL fill:#A855F7,stroke:#5B21B6,color:#fff
+    style STORAGE fill:#C4B5FD,stroke:#A855F7,color:#333
+    style GOVERNANCE fill:#A7F3D0,stroke:#5B21B6,color:#333
+                </pre>
+            </div>
+        </div>
+
+        <!-- Section 7: Go-To-Market Timeline -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">7</div>
+                <div class="section-title">
+                    <h3>Go-To-Market Phase Flow (18-24 Months)</h3>
+                    <p>Realistic timeline dengan risk buffers</p>
+                </div>
+            </div>
+            <div class="mermaid-container">
+                <pre class="mermaid">
+flowchart LR
+    subgraph P1["PHASE 1<br/>Month 1-6"]
+        A1["Core SaaS Platform"]
+        A2["Synthetic Data Pipeline"]
+        A3["MVP: Dashboard +<br/>AI Assistant"]
+    end
+
+    subgraph P2["PHASE 2<br/>Month 7-10"]
+        B1["Human-in-Loop<br/>Modules"]
+        B2["High-Risk Alert<br/>Workflows"]
+        B3["PDP Law<br/>Compliance"]
+    end
+
+    subgraph P3["PHASE 3<br/>Month 11-16"]
+        C1["Regional Pilots"]
+        C2["Jurisdiction-Specific<br/>Testing"]
+        C3["ROI Validation"]
+    end
+
+    subgraph P4["PHASE 4<br/>Month 17-21"]
+        D1["SMMA Full Rollout"]
+        D2["Cross-Entity<br/>Benchmarking"]
+        D3["3-Month UAT<br/>Buffer"]
+    end
+
+    subgraph P5["PHASE 5<br/>Month 22-24+"]
+        E1["Mining Expansion"]
+        E2["GEMS/DSSA<br/>Integration"]
+        E3["External<br/>Monetization"]
+    end
+
+    P1 --> P2 --> P3 --> P4 --> P5
+
+    style P1 fill:#5B21B6,stroke:#A855F7,color:#fff
+    style P2 fill:#A855F7,stroke:#5B21B6,color:#fff
+    style P3 fill:#C4B5FD,stroke:#A855F7,color:#333
+    style P4 fill:#BAD5F5,stroke:#5B21B6,color:#333
+    style P5 fill:#A7F3D0,stroke:#5B21B6,color:#333
+                </pre>
+            </div>
+            <div class="key-changes">
+                <h4>Timeline Changes (dari AI Review)</h4>
+                <ul>
+                    <li>Extended dari 15 bulan ke 18-24 bulan</li>
+                    <li>Phase 2 dedicated untuk Human-in-Loop & PDP compliance</li>
+                    <li>3-month UAT buffer di Phase 4</li>
+                    <li>Mining expansion di-push ke Phase 5 setelah validasi ROI</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 8: Key Metrics -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">8</div>
+                <div class="section-title">
+                    <h3>Success Metrics & ROI</h3>
+                    <p>Quantified targets dengan baseline comparison</p>
+                </div>
+            </div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Metric Category</th>
+                        <th>Target</th>
+                        <th>Measurement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ROI</strong></td>
+                        <td>5:1 within 12 months</td>
+                        <td>Financial analysis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cost Avoidance</strong></td>
+                        <td>Rp 10B+ fines prevented</td>
+                        <td>Risk exposure reduction</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Audit Time</strong></td>
+                        <td>70% faster preparation</td>
+                        <td>Before/after comparison</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FTE Reduction</strong></td>
+                        <td>30% compliance effort</td>
+                        <td>Time tracking</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AI Accuracy</strong></td>
+                        <td>95%+ precision, 90%+ recall</td>
+                        <td>Model evaluation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Human-in-Loop</strong></td>
+                        <td>100% for high-risk decisions</td>
+                        <td>Approval audit logs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>User Adoption</strong></td>
+                        <td>90% active users</td>
+                        <td>Monthly active users</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section 9: Competitive Differentiators -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">9</div>
+                <div class="section-title">
+                    <h3>COMPAS Unique Differentiators</h3>
+                    <p>Why COMPAS vs. Global & Regional Players</p>
+                </div>
+            </div>
+            <div class="mermaid-container">
+                <pre class="mermaid">
+flowchart TB
+    CENTER["COMPAS"]
+
+    subgraph D1["Indonesian Regulatory Intelligence"]
+        D1A["OJK/BI/MOE Knowledge"]
+        D1B["OCR for Indonesian PDFs"]
+        D1C["Local regulatory API"]
+    end
+
+    subgraph D2["Bahasa AI Assistant"]
+        D2A["RAG-grounded responses"]
+        D2B["No hallucinations"]
+        D2C["24/7 availability"]
+    end
+
+    subgraph D3["Human-in-the-Loop by Design"]
+        D3A["Mandatory for high-risk"]
+        D3B["Multi-level approval"]
+        D3C["Full audit trail"]
+    end
+
+    subgraph D4["Contextual Engagement"]
+        D4A["Risk-based approach"]
+        D4B["Indonesian corporate culture"]
+        D4C["Real-world KPI linkage"]
+    end
+
+    subgraph D5["Cross-Pillar Design"]
+        D5A["Financial Services"]
+        D5B["Mining ready"]
+        D5C["40+ subsidiaries"]
+    end
+
+    subgraph D6["PDP Law 2023 Native"]
+        D6A["Data protection built-in"]
+        D6B["Data residency compliance"]
+        D6C["7-year retention"]
+    end
+
+    CENTER --> D1
+    CENTER --> D2
+    CENTER --> D3
+    CENTER --> D4
+    CENTER --> D5
+    CENTER --> D6
+
+    style CENTER fill:#5B21B6,stroke:#A855F7,color:#fff,font-weight:bold
+    style D1 fill:#A855F7,stroke:#5B21B6,color:#fff
+    style D2 fill:#C4B5FD,stroke:#A855F7,color:#333
+    style D3 fill:#A7F3D0,stroke:#5B21B6,color:#333
+    style D4 fill:#BAD5F5,stroke:#5B21B6,color:#333
+    style D5 fill:#A855F7,stroke:#5B21B6,color:#fff
+    style D6 fill:#C4B5FD,stroke:#A855F7,color:#333
+                </pre>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="quote">"Be the golden bridge that people want to pass and could pass to make their lives and activities easier."</p>
+            <p class="author">— Tata</p>
+            <br>
+            <p>COMPAS (Compliance Process Automation Service) v2.0</p>
+            <p>December 2024 | Prepared by Banat Zata</p>
+            <p style="margin-top: 10px; font-size: 0.85rem; color: #999;">
+                Revised based on AI Peer Review (DeepSeek, Qwen, Grok)
+            </p>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#5B21B6',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#A855F7',
+                lineColor: '#A855F7',
+                secondaryColor: '#C4B5FD',
+                tertiaryColor: '#BAD5F5',
+                background: '#ffffff',
+                mainBkg: '#5B21B6',
+                nodeBorder: '#A855F7',
+                clusterBkg: '#f9fafb',
+                clusterBorder: '#A855F7',
+                titleColor: '#5B21B6',
+                edgeLabelBackground: '#ffffff'
+            },
+            flowchart: {
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 15
+            }
+        });
+    </script>
+</body>
+</html>

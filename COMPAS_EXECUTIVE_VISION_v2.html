@@ -1,0 +1,2141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>COMPAS Executive Vision v2.0</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f1f5f9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 10.5pt;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 25px 80px rgba(15, 23, 42, 0.15);
+        }
+
+        /* Cover Section */
+        .cover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 50%);
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover h1 {
+            font-size: 56pt;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .cover h2 {
+            font-size: 14pt;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .cover h3 {
+            font-size: 11pt;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        .cover-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-size: 10pt;
+            opacity: 0.85;
+        }
+
+        .cover-meta-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cover-meta-label {
+            font-size: 8pt;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+        }
+
+        /* Page content */
+        .page-content {
+            padding: 40px 50px;
+        }
+
+        /* Section styling */
+        .section {
+            margin-bottom: 35px;
+        }
+
+        /* Headings */
+        h1 {
+            font-size: 20pt;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 45px 0 20px 0;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--primary-light);
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        h2 {
+            font-size: 14pt;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 30px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--primary-light), var(--secondary));
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 12pt;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 22px 0 12px 0;
+        }
+
+        h4 {
+            font-size: 11pt;
+            font-weight: 600;
+            color: var(--gray);
+            margin: 18px 0 10px 0;
+        }
+
+        /* Paragraphs */
+        p {
+            margin: 12px 0;
+            text-align: justify;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 12px 0 12px 20px;
+        }
+
+        li {
+            margin: 8px 0;
+            position: relative;
+        }
+
+        ul li::marker {
+            color: var(--primary-light);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            font-size: 9.5pt;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            font-weight: 600;
+            text-align: left;
+            padding: 14px 16px;
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        tr:hover {
+            background: #f1f5f9;
+        }
+
+        /* Strong text */
+        strong {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid var(--secondary);
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            padding: 18px 24px;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        blockquote p {
+            margin: 0;
+            color: var(--primary);
+            font-style: italic;
+        }
+
+        /* Horizontal rules */
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-light), var(--secondary), var(--accent));
+            margin: 40px 0;
+            border-radius: 1px;
+        }
+
+        /* Code blocks - we won't have dark ones now */
+        pre {
+            display: none;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9pt;
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 6px;
+            color: var(--secondary);
+        }
+
+        /* ========== DIAGRAM STYLES ========== */
+
+        .diagram-container {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .diagram-title {
+            font-size: 13pt;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Alert Workflow Diagram */
+        .flow-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 24px;
+            border-radius: 12px;
+            min-width: 280px;
+            justify-content: center;
+        }
+
+        .flow-start {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+        }
+
+        .flow-process {
+            background: linear-gradient(135deg, var(--secondary), #7c3aed);
+            color: white;
+        }
+
+        .flow-end {
+            background: linear-gradient(135deg, var(--success), #059669);
+            color: white;
+        }
+
+        .flow-icon {
+            font-size: 20pt;
+        }
+
+        .flow-label {
+            font-weight: 600;
+            font-size: 11pt;
+        }
+
+        .flow-arrow {
+            color: var(--gray);
+            font-size: 18pt;
+        }
+
+        .confidence-box {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.1);
+        }
+
+        .confidence-row {
+            display: grid;
+            grid-template-columns: 80px 70px 1fr;
+            align-items: center;
+            padding: 14px 16px;
+            gap: 12px;
+        }
+
+        .confidence-row.high {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+        }
+
+        .confidence-row.medium {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+        }
+
+        .confidence-row.low {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+        }
+
+        .confidence-badge {
+            font-weight: 800;
+            font-size: 10pt;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .high .confidence-badge {
+            background: var(--success);
+            color: white;
+        }
+
+        .medium .confidence-badge {
+            background: var(--warning);
+            color: white;
+        }
+
+        .low .confidence-badge {
+            background: var(--danger);
+            color: white;
+        }
+
+        .confidence-threshold {
+            font-weight: 600;
+            font-size: 10pt;
+            color: var(--dark);
+        }
+
+        .confidence-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-size: 9pt;
+            color: var(--dark);
+        }
+
+        /* Regulatory Flow Diagram */
+        .regulatory-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .reg-step {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 20px;
+            background: white;
+            border-left: 4px solid var(--step-color);
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .reg-number {
+            width: 32px;
+            height: 32px;
+            background: var(--step-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 12pt;
+            flex-shrink: 0;
+        }
+
+        .reg-content {
+            flex: 1;
+        }
+
+        .reg-title {
+            font-weight: 700;
+            font-size: 10pt;
+            color: var(--dark);
+        }
+
+        .reg-desc {
+            font-size: 9pt;
+            color: var(--gray);
+        }
+
+        .reg-connector {
+            width: 4px;
+            height: 12px;
+            background: #e2e8f0;
+            margin-left: 34px;
+        }
+
+        /* Architecture Diagram */
+        .arch-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .arch-layer {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            border: 2px solid var(--layer-color);
+        }
+
+        .arch-layer-title {
+            font-weight: 700;
+            font-size: 10pt;
+            color: var(--layer-color);
+            text-align: center;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .arch-boxes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .arch-box {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .arch-box-icon {
+            font-size: 24pt;
+            margin-bottom: 6px;
+        }
+
+        .arch-box-title {
+            font-weight: 600;
+            font-size: 9pt;
+            color: var(--dark);
+            margin-bottom: 2px;
+        }
+
+        .arch-box-desc {
+            font-size: 8pt;
+            color: var(--gray);
+        }
+
+        .arch-arrow {
+            text-align: center;
+            font-size: 20pt;
+            color: var(--gray);
+        }
+
+        /* Platform Diagram */
+        .platform-diagram {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+        }
+
+        .platform-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: 700;
+            font-size: 12pt;
+            letter-spacing: 0.15em;
+        }
+
+        .platform-layers {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            gap: 12px;
+        }
+
+        .platform-col {
+            flex: 1;
+        }
+
+        .platform-box {
+            border-radius: 10px;
+            padding: 14px;
+        }
+
+        .platform-box.data-layer {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border: 2px solid var(--primary-light);
+        }
+
+        .platform-box.engine-layer {
+            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+            border: 2px solid var(--secondary);
+        }
+
+        .platform-box.app-layer {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            border: 2px solid var(--success);
+        }
+
+        .platform-box-title {
+            font-weight: 700;
+            font-size: 10pt;
+            text-align: center;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .platform-box ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .platform-box li {
+            font-size: 9pt;
+            padding: 4px 0;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .platform-arrow {
+            font-size: 24pt;
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        .governance-bar {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 14px 20px;
+            border-top: 2px solid var(--warning);
+        }
+
+        .governance-title {
+            font-weight: 700;
+            font-size: 9pt;
+            color: var(--dark);
+            text-align: center;
+            margin-bottom: 8px;
+            letter-spacing: 0.1em;
+        }
+
+        .governance-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .governance-items span {
+            background: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 8pt;
+            color: var(--dark);
+            border: 1px solid #fbbf24;
+        }
+
+        /* Vision Box */
+        .vision-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 24px 30px;
+            border-radius: 16px;
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .vision-box p {
+            font-size: 12pt;
+            font-weight: 500;
+            font-style: italic;
+            text-align: center;
+            margin: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 50px;
+            text-align: center;
+        }
+
+        .footer-quote {
+            font-size: 13pt;
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 12px;
+        }
+
+        .footer-author {
+            font-weight: 700;
+            font-size: 11pt;
+            color: var(--primary-light);
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .container {
+                box-shadow: none !important;
+                max-width: 100% !important;
+            }
+
+            .cover {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                page-break-after: always;
+            }
+
+            h1 {
+                page-break-before: auto;
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }
+
+            h2, h3, h4 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }
+
+            table {
+                page-break-inside: avoid;
+                font-size: 9pt !important;
+            }
+
+            .diagram-container {
+                page-break-inside: avoid;
+                page-break-before: auto;
+            }
+
+            tr {
+                page-break-inside: avoid;
+            }
+
+            p {
+                orphans: 3;
+                widows: 3;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Page break helper */
+        .page-break {
+            page-break-after: always;
+        }
+
+        /* Prevent table overflow */
+        table {
+            table-layout: fixed;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cover">
+            <div class="cover-content">
+                <h1>COMPAS</h1>
+                <h2>Compliance Process Automation Service</h2>
+                <h3>Executive Vision Document</h3>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <span class="cover-meta-label">Prepared by</span>
+                        <span>Banat Zata (Tata)</span>
+                    </div>
+                    <div class="cover-meta-item">
+                        <span class="cover-meta-label">Role</span>
+                        <span>Lead Product Manager</span>
+                    </div>
+                    <div class="cover-meta-item">
+                        <span class="cover-meta-label">Date</span>
+                        <span>December 2024</span>
+                    </div>
+                    <div class="cover-meta-item">
+                        <span class="cover-meta-label">Version</span>
+                        <span>2.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-content">
+            <h1 id="compas">COMPAS</h1>
+<h2 id="compliance-process-automation-service">Compliance Process Automation Service</h2>
+<h3 id="executive-vision-document">Executive Vision Document</h3>
+<hr />
+<p><strong>Prepared by:</strong> Banat Zata (Tata)
+<strong>Role:</strong> Lead Product Manager
+<strong>Date:</strong> December 2024
+<strong>Version:</strong> 2.0</p>
+<hr />
+<h2 id="executive-summary">Executive Summary</h2>
+<p>COMPAS (Compliance Process Automation Service) is an intelligent platform designed to transform how Sinar Mas Group entities manage compliance, governance, and standard operating procedures. Through real-time monitoring, predictive risk assessment, and automated regulatory adaptation, COMPAS addresses the critical challenge of maintaining compliance across 40+ subsidiaries while reducing manual effort and minimizing regulatory risk exposure.</p>
+<p></p><div class="vision-box"><p><strong>The Vision:</strong> Make compliance invisible yet omnipresent</p></div><p>—a system that works silently in the background, ensuring every process, every document, and every employee action aligns with regulations, while surfacing only what matters to decision-makers.</p>
+<hr />
+<h2 id="the-problem">The Problem</h2>
+<h3 id="current-state-pain-points">Current State Pain Points</h3>
+<table>
+<thead>
+<tr>
+<th>Challenge</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fragmented Compliance</strong></td>
+<td>40+ SMMA subsidiaries each managing compliance independently with inconsistent standards</td>
+</tr>
+<tr>
+<td><strong>Reactive Approach</strong></td>
+<td>Issues discovered during audits, not before—leading to fines and remediation costs</td>
+</tr>
+<tr>
+<td><strong>Manual Processes</strong></td>
+<td>Compliance officers spend 60-70% of time on documentation, not strategic risk management</td>
+</tr>
+<tr>
+<td><strong>Regulatory Lag</strong></td>
+<td>New regulations (OJK, BI, MOE 2025) require months to cascade across all entities</td>
+</tr>
+<tr>
+<td><strong>Knowledge Silos</strong></td>
+<td>Institutional compliance knowledge lives in people's heads, not systems</td>
+</tr>
+<tr>
+<td><strong>Audit Anxiety</strong></td>
+<td>Preparation for audits is stressful, time-consuming, and resource-intensive</td>
+</tr>
+<tr>
+<td><strong>Data Privacy Gaps</strong></td>
+<td>No unified approach to PDP Law 2023 compliance across entities</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-cost-of-non-compliance">The Cost of Non-Compliance</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Impact</th>
+<th>Estimated Annual Exposure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Financial</strong></td>
+<td>OJK fines, MOE environmental penalties</td>
+<td>Rp 5-50 Billion</td>
+</tr>
+<tr>
+<td><strong>Operational</strong></td>
+<td>License suspension, business halt</td>
+<td>Rp 100+ Billion revenue at risk</td>
+</tr>
+<tr>
+<td><strong>Reputational</strong></td>
+<td>Investor confidence, credit ratings</td>
+<td>Long-term valuation impact</td>
+</tr>
+<tr>
+<td><strong>Strategic</strong></td>
+<td>M&amp;A valuation, partnership opportunities</td>
+<td>Deal value reduction 10-20%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="baseline-metrics-current-state">Baseline Metrics (Current State)</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Current State</th>
+<th>Industry Benchmark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Audit preparation time</td>
+<td>4-6 weeks</td>
+<td>1-2 weeks</td>
+</tr>
+<tr>
+<td>Compliance FTE hours on documentation</td>
+<td>60-70%</td>
+<td>30-40%</td>
+</tr>
+<tr>
+<td>Regulatory update cascade time</td>
+<td>2-3 months</td>
+<td>2-4 weeks</td>
+</tr>
+<tr>
+<td>Compliance violations per audit</td>
+<td>8-12 findings</td>
+<td>2-4 findings</td>
+</tr>
+<tr>
+<td>Employee SOP comprehension rate</td>
+<td>~60%</td>
+<td>85%+</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="the-opportunity">The Opportunity</h2>
+<h3 id="regulatory-tailwinds">Regulatory Tailwinds</h3>
+<ol>
+<li><strong>MOE Regulation No. 20/2025</strong> - New environmental monitoring requirements for mining (effective Oct 2025)</li>
+<li><strong>OJK Strengthening</strong> - Increased scrutiny on financial services compliance</li>
+<li><strong>PDP Law 2023</strong> - Personal Data Protection requirements (mandatory compliance)</li>
+<li><strong>ESG Pressure</strong> - Investors demanding better governance and transparency</li>
+<li><strong>Digital Transformation</strong> - Regulators expecting digital compliance reporting</li>
+</ol>
+<h3 id="market-context">Market Context</h3>
+<table>
+<thead>
+<tr>
+<th>Market Segment</th>
+<th>2024 Size</th>
+<th>2030 Projection</th>
+<th>CAGR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compliance Monitoring</td>
+<td>$1.8B</td>
+<td>$5.2B</td>
+<td>19.4%</td>
+</tr>
+<tr>
+<td>RegTech</td>
+<td>$14.9B</td>
+<td>$106.9B (2035)</td>
+<td>19.6%</td>
+</tr>
+<tr>
+<td>Process Mining</td>
+<td>$2.46B</td>
+<td>$42.7B (2032)</td>
+<td>42.0%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sqes-unique-position">SQE's Unique Position</h3>
+<ul>
+<li><strong>Built-in Customer Base:</strong> 40+ SMMA subsidiaries ready for pilot and deployment</li>
+<li><strong>Group Synergy:</strong> Potential expansion to Mining pillar (DSSA/GEMS - USD 3B revenue)</li>
+<li><strong>Local Expertise:</strong> Deep understanding of Indonesian regulatory landscape (OJK, BI, MOE)</li>
+<li><strong>Proven Track Record:</strong> Successful digital products (ASJ, GARASI Dealer)</li>
+</ul>
+<hr />
+<h2 id="the-solution-compas">The Solution: COMPAS</h2>
+<h3 id="product-definition">Product Definition</h3>
+<p><strong>COMPAS</strong> is an intelligent compliance management platform that:</p>
+<ol>
+<li><strong>Monitors</strong> operational processes in real-time against SOPs and regulations</li>
+<li><strong>Detects</strong> deviations and potential compliance risks before they become violations</li>
+<li><strong>Adapts</strong> automatically when regulations change, with human-approved SOP updates</li>
+<li><strong>Enables</strong> employees to understand and follow compliance through contextual engagement</li>
+<li><strong>Reports</strong> audit-ready documentation with generated insights</li>
+<li><strong>Protects</strong> personal data in compliance with PDP Law 2023</li>
+</ol>
+<h3 id="core-value-propositions">Core Value Propositions</h3>
+<table>
+<thead>
+<tr>
+<th>Stakeholder</th>
+<th>Value Delivered</th>
+<th>Quantified Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C-Level / Board</strong></td>
+<td>Single dashboard showing enterprise-wide risk exposure in Rupiah</td>
+<td>80% faster risk visibility</td>
+</tr>
+<tr>
+<td><strong>Compliance Officers</strong></td>
+<td>Focus on strategic risk management, not documentation</td>
+<td>70% reduction in manual work</td>
+</tr>
+<tr>
+<td><strong>Managers</strong></td>
+<td>Real-time visibility into team compliance; actionable alerts</td>
+<td>50% faster issue resolution</td>
+</tr>
+<tr>
+<td><strong>Employees</strong></td>
+<td>Easy-to-understand SOPs; contextual learning; assistant</td>
+<td>40% better SOP comprehension</td>
+</tr>
+<tr>
+<td><strong>Auditors</strong></td>
+<td>Pre-compiled audit trails; explained findings</td>
+<td>70% faster audit cycles</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="key-features">Key Features</h2>
+<h3 id="1-intelligent-risk-dashboard-c-level-view">1. Intelligent Risk Dashboard (C-Level View)</h3>
+<p><strong>Purpose:</strong> One-screen visibility into enterprise-wide compliance health</p>
+<p><strong>Components:</strong>
+- <strong>Risk Heatmap</strong> - Visual map of all entities: RED/YELLOW/GREEN status with trend indicators
+- <strong>Financial Exposure Ticker</strong> - Real-time "Rp X.X B at risk" calculation
+- <strong>Regulatory Countdown</strong> - Upcoming deadlines with days remaining
+- <strong>Cross-Entity Benchmarking</strong> - Performance comparison across subsidiaries
+- <strong>Drill-Down Capabilities</strong> - Click-through to entity/department/individual level</p>
+<h3 id="2-real-time-deviation-detection-alerts">2. Real-Time Deviation Detection &amp; Alerts</h3>
+<p><strong>Purpose:</strong> Catch compliance issues before they become violations</p>
+<p><strong>How It Works:</strong>
+- System continuously monitors process logs, documents, and transactions
+- Compares against SOP rules and regulatory requirements
+- Generates alerts with severity levels and confidence scores
+- Provides explained reasoning ("This transaction flagged because...")</p>
+<p><strong>Human-in-the-Loop Workflow:</strong></p>
+
+<div class="diagram-container">
+    <div class="diagram-title">Human-in-the-Loop Workflow</div>
+    <div class="flow-diagram">
+        <div class="flow-step flow-start">
+            <div class="flow-icon">🔔</div>
+            <div class="flow-label">Alert Generated</div>
+        </div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-step flow-process">
+            <div class="flow-icon">📊</div>
+            <div class="flow-label">Confidence Score Evaluation</div>
+        </div>
+        <div class="flow-arrow">▼</div>
+        <div class="confidence-box">
+            <div class="confidence-row high">
+                <div class="confidence-badge">HIGH</div>
+                <div class="confidence-threshold">&gt;90%</div>
+                <div class="confidence-actions">
+                    <span>✓ Auto-flag with notification</span>
+                    <span>✓ Human review optional</span>
+                </div>
+            </div>
+            <div class="confidence-row medium">
+                <div class="confidence-badge">MEDIUM</div>
+                <div class="confidence-threshold">70-90%</div>
+                <div class="confidence-actions">
+                    <span>⚠ Mandatory human review</span>
+                    <span>⚠ Compliance Officer approval</span>
+                </div>
+            </div>
+            <div class="confidence-row low">
+                <div class="confidence-badge">LOW</div>
+                <div class="confidence-threshold">&lt;70%</div>
+                <div class="confidence-actions">
+                    <span>🔺 Escalate to Senior Management</span>
+                    <span>🔺 Multi-level approval required</span>
+                </div>
+            </div>
+        </div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-step flow-end">
+            <div class="flow-icon">📝</div>
+            <div class="flow-label">Action Taken & Logged in Audit Trail</div>
+        </div>
+    </div>
+</div>
+
+<p><strong>Risk Mitigation:</strong>
+- Low confidence alerts escalate to human review
+- All decisions logged with full audit trail
+- Explainability layer for every flagged item
+- RAG (Retrieval-Augmented Generation) to ensure accuracy</p>
+<h3 id="3-dynamic-regulatory-adaptation-framework">3. Dynamic Regulatory Adaptation Framework</h3>
+<p><strong>Purpose:</strong> Stay current with evolving regulations without manual SOP rewrites</p>
+<p><strong>The Flow:</strong></p>
+
+<div class="diagram-container">
+    <div class="diagram-title">Dynamic Regulatory Adaptation Flow</div>
+    <div class="regulatory-flow">
+        <div class="reg-step" style="--step-color: #3b82f6;">
+            <div class="reg-number">1</div>
+            <div class="reg-content">
+                <div class="reg-title">Regulatory Intelligence Engine</div>
+                <div class="reg-desc">API integration with OJK, BI, MOE repositories</div>
+            </div>
+        </div>
+        <div class="reg-connector"></div>
+        <div class="reg-step" style="--step-color: #8b5cf6;">
+            <div class="reg-number">2</div>
+            <div class="reg-content">
+                <div class="reg-title">Impact Analysis</div>
+                <div class="reg-desc">System analyzes impact on current SOPs</div>
+            </div>
+        </div>
+        <div class="reg-connector"></div>
+        <div class="reg-step" style="--step-color: #ec4899;">
+            <div class="reg-number">3</div>
+            <div class="reg-content">
+                <div class="reg-title">SOP Amendment Drafting</div>
+                <div class="reg-desc">Automated draft generation for review</div>
+            </div>
+        </div>
+        <div class="reg-connector"></div>
+        <div class="reg-step" style="--step-color: #f59e0b;">
+            <div class="reg-number">4</div>
+            <div class="reg-content">
+                <div class="reg-title">Human Review & Approval</div>
+                <div class="reg-desc">Compliance Officer validation</div>
+            </div>
+        </div>
+        <div class="reg-connector"></div>
+        <div class="reg-step" style="--step-color: #10b981;">
+            <div class="reg-number">5</div>
+            <div class="reg-content">
+                <div class="reg-title">Staged Rollout</div>
+                <div class="reg-desc">Test branch first, then full deployment</div>
+            </div>
+        </div>
+        <div class="reg-connector"></div>
+        <div class="reg-step" style="--step-color: #06b6d4;">
+            <div class="reg-number">6</div>
+            <div class="reg-content">
+                <div class="reg-title">Training Auto-Triggered</div>
+                <div class="reg-desc">Affected employees notified & enrolled</div>
+            </div>
+        </div>
+        <div class="reg-connector"></div>
+        <div class="reg-step" style="--step-color: #6366f1;">
+            <div class="reg-number">7</div>
+            <div class="reg-content">
+                <div class="reg-title">Grace Period</div>
+                <div class="reg-desc">30-60 days before full enforcement</div>
+            </div>
+        </div>
+        <div class="reg-connector"></div>
+        <div class="reg-step" style="--step-color: #22c55e;">
+            <div class="reg-number">8</div>
+            <div class="reg-content">
+                <div class="reg-title">Full Enforcement</div>
+                <div class="reg-desc">Active monitoring & compliance tracking</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p><strong>Key Components:</strong>
+- <strong>OCR-to-Structured-Rule Engine</strong> - Process Indonesian regulatory PDFs (often with handwritten notes)
+- <strong>Knowledge Graph Layer</strong> - Map relationships between regulations and SOPs
+- <strong>Regulatory Scenario Simulations</strong> - Model impact of sudden regulatory changes
+- <strong>Regional Tuning</strong> - Locale-specific adjustments for Bahasa Indonesia variations</p>
+<h3 id="4-compliance-assistant-natural-language">4. Compliance Assistant (Natural Language)</h3>
+<p><strong>Purpose:</strong> Democratize compliance knowledge across the organization</p>
+<p><strong>Capabilities:</strong>
+- Answer compliance questions in Bahasa Indonesia (formal &amp; informal)
+- Cite relevant SOPs and regulations with source links
+- Explain "why" behind compliance requirements
+- Guide document compliance checking
+- Available 24/7 for all employees</p>
+<p><strong>Technical Safeguards:</strong>
+- RAG architecture to ground responses in actual SOPs/regulations
+- Confidence scoring on every response
+- "I don't know" fallback when uncertain
+- Human escalation path for complex queries</p>
+<p><strong>Use Cases:</strong>
+- "Apa syarat untuk approve loan di atas 500 juta?"
+- "Dokumen apa saja yang perlu untuk audit OJK?"
+- "Apakah transaksi ini sesuai dengan SOP anti-money laundering?"</p>
+<h3 id="5-contextual-compliance-engagement-framework">5. Contextual Compliance Engagement Framework</h3>
+<p><strong>Purpose:</strong> Make compliance engaging without trivializing regulatory risks</p>
+<p><strong>Hybrid Engagement Model:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Risk Level</th>
+<th>Engagement Approach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Low-Risk Tasks</strong></td>
+<td>Light gamification (badges, points, streaks)</td>
+</tr>
+<tr>
+<td><strong>Medium-Risk Tasks</strong></td>
+<td>Structured learning with assessments</td>
+</tr>
+<tr>
+<td><strong>High-Risk Compliance</strong></td>
+<td>Compulsory rule-based workflow, senior escalation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Features:</strong>
+- <strong>Personal Compliance Score</strong> - Individual dashboard with achievement tracking
+- <strong>Department Performance Metrics</strong> - Team-based compliance visibility
+- <strong>Contextual Quizzes</strong> - Learning triggered by actual work context
+- <strong>Achievement Timeline</strong> - Visual journey of trainings, certifications
+- <strong>Local-Centric Incentives</strong> - Link to real performance metrics</p>
+<p><strong>Special Features:</strong>
+- <strong>New Joiner Onboarding (NJO) Track</strong> - Structured compliance learning path
+- <strong>SOP Update Modules</strong> - Mandatory completion for new/updated SOPs
+- <strong>Impact KPIs</strong> - "Regulatory risk exposure reduced by X%" metrics</p>
+<h3 id="6-automated-audit-report-generation">6. Automated Audit Report Generation</h3>
+<p><strong>Purpose:</strong> Transform audit preparation from weeks to days</p>
+<p><strong>Capabilities:</strong>
+- Auto-compile compliance data across all monitored processes
+- Generated executive summary with key findings
+- Full audit trail with timestamps and responsible parties
+- Grace period status report (who's transitioned, who hasn't)
+- Export in regulator-required formats (OJK, BI, MOE templates)
+- Drill-down capabilities for auditor deep-dives</p>
+<hr />
+<h2 id="data-strategy">Data Strategy</h2>
+<h3 id="data-architecture-overview">Data Architecture Overview</h3>
+
+<div class="diagram-container">
+    <div class="diagram-title">Data Architecture Overview</div>
+    <div class="arch-diagram">
+        <div class="arch-layer" style="--layer-color: #3b82f6;">
+            <div class="arch-layer-title">DATA INGESTION LAYER</div>
+            <div class="arch-boxes">
+                <div class="arch-box">
+                    <div class="arch-box-icon">🔗</div>
+                    <div class="arch-box-title">Legacy ERP Connectors</div>
+                    <div class="arch-box-desc">SAP, Oracle, Custom</div>
+                </div>
+                <div class="arch-box">
+                    <div class="arch-box-icon">🏦</div>
+                    <div class="arch-box-title">Core Banking APIs</div>
+                    <div class="arch-box-desc">Real-time feeds</div>
+                </div>
+                <div class="arch-box">
+                    <div class="arch-box-icon">📤</div>
+                    <div class="arch-box-title">Manual Upload</div>
+                    <div class="arch-box-desc">Excel, PDF</div>
+                </div>
+            </div>
+        </div>
+        <div class="arch-arrow">⬇</div>
+        <div class="arch-layer" style="--layer-color: #8b5cf6;">
+            <div class="arch-layer-title">ETL & PROCESSING LAYER</div>
+            <div class="arch-boxes">
+                <div class="arch-box">
+                    <div class="arch-box-icon">🧹</div>
+                    <div class="arch-box-title">Data Cleaning Pipeline</div>
+                    <div class="arch-box-desc">Quality scoring</div>
+                </div>
+                <div class="arch-box">
+                    <div class="arch-box-icon">📄</div>
+                    <div class="arch-box-title">OCR Engine</div>
+                    <div class="arch-box-desc">PDF → Text</div>
+                </div>
+                <div class="arch-box">
+                    <div class="arch-box-icon">🔄</div>
+                    <div class="arch-box-title">Format Normalizer</div>
+                    <div class="arch-box-desc">Multi-format</div>
+                </div>
+            </div>
+        </div>
+        <div class="arch-arrow">⬇</div>
+        <div class="arch-layer" style="--layer-color: #10b981;">
+            <div class="arch-layer-title">STORAGE & ANALYTICS LAYER</div>
+            <div class="arch-boxes">
+                <div class="arch-box">
+                    <div class="arch-box-icon">🗄️</div>
+                    <div class="arch-box-title">Compliance Data Lake</div>
+                    <div class="arch-box-desc">Structured + Raw</div>
+                </div>
+                <div class="arch-box">
+                    <div class="arch-box-icon">🤖</div>
+                    <div class="arch-box-title">ML Model Registry</div>
+                    <div class="arch-box-desc">Version control</div>
+                </div>
+                <div class="arch-box">
+                    <div class="arch-box-icon">📋</div>
+                    <div class="arch-box-title">Audit Logs</div>
+                    <div class="arch-box-desc">Immutable</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 id="legacy-system-integration-plan">Legacy System Integration Plan</h3>
+<table>
+<thead>
+<tr>
+<th>System Type</th>
+<th>Integration Approach</th>
+<th>Timeline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modern APIs</td>
+<td>Direct REST/GraphQL integration</td>
+<td>Phase 1</td>
+</tr>
+<tr>
+<td>Legacy ERP (SAP/Oracle)</td>
+<td>Middleware connectors</td>
+<td>Phase 2</td>
+</tr>
+<tr>
+<td>Custom Internal Systems</td>
+<td>Custom adapters</td>
+<td>Phase 2-3</td>
+</tr>
+<tr>
+<td>Manual Processes</td>
+<td>Digitization + OCR</td>
+<td>Phase 3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-quality-framework">Data Quality Framework</h3>
+<ul>
+<li><strong>Automated Quality Scoring</strong> - Every data point rated for completeness, accuracy</li>
+<li><strong>Data Lineage Tracking</strong> - Full audit trail of data transformations</li>
+<li><strong>Anomaly Detection</strong> - Flag unusual data patterns for review</li>
+<li><strong>Staged Onboarding</strong> - Entity-by-entity data onboarding with validation</li>
+</ul>
+<hr />
+<h2 id="privacy-security-framework">Privacy &amp; Security Framework</h2>
+<h3 id="pdp-law-2023-compliance">PDP Law 2023 Compliance</h3>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>COMPAS Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data Minimization</strong></td>
+<td>Collect only necessary compliance data</td>
+</tr>
+<tr>
+<td><strong>Purpose Limitation</strong></td>
+<td>Clear data usage policies per module</td>
+</tr>
+<tr>
+<td><strong>Consent Management</strong></td>
+<td>Built-in consent tracking for employee data</td>
+</tr>
+<tr>
+<td><strong>Data Subject Rights</strong></td>
+<td>Self-service portal for access/correction requests</td>
+</tr>
+<tr>
+<td><strong>Cross-Border Transfer</strong></td>
+<td>On-premise option; data residency controls</td>
+</tr>
+<tr>
+<td><strong>Breach Notification</strong></td>
+<td>Automated incident detection and reporting</td>
+</tr>
+</tbody>
+</table>
+<h3 id="security-standards">Security Standards</h3>
+<table>
+<thead>
+<tr>
+<th>Standard</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ISO 27001</strong></td>
+<td>Information security management aligned</td>
+</tr>
+<tr>
+<td><strong>SOC 2 Type II</strong></td>
+<td>Ready for certification</td>
+</tr>
+<tr>
+<td><strong>Encryption</strong></td>
+<td>At-rest (AES-256) and in-transit (TLS 1.3)</td>
+</tr>
+<tr>
+<td><strong>Access Control</strong></td>
+<td>Role-based (RBAC) + Attribute-based (ABAC)</td>
+</tr>
+<tr>
+<td><strong>Audit Logging</strong></td>
+<td>Immutable logs, 7-year retention</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ethics-governance">Ethics &amp; Governance</h3>
+<ul>
+<li><strong>Bias Audits</strong> - Regular fairness assessments on models</li>
+<li><strong>Transparency Reports</strong> - Published metrics on decision accuracy</li>
+<li><strong>Human Override</strong> - Always available for any automated decision</li>
+<li><strong>Model Versioning</strong> - Full lineage and rollback capability</li>
+</ul>
+<hr />
+<h2 id="technical-architecture">Technical Architecture</h2>
+<h3 id="platform-architecture-high-level">Platform Architecture (High-Level)</h3>
+
+<div class="diagram-container">
+    <div class="diagram-title">COMPAS Platform Architecture</div>
+    <div class="platform-diagram">
+        <div class="platform-header">COMPAS PLATFORM</div>
+        <div class="platform-layers">
+            <div class="platform-col">
+                <div class="platform-box data-layer">
+                    <div class="platform-box-title">Data Layer</div>
+                    <ul>
+                        <li>Process Logs</li>
+                        <li>Documents</li>
+                        <li>SOPs</li>
+                        <li>Regulatory DB</li>
+                        <li>OCR Data</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="platform-arrow">→</div>
+            <div class="platform-col">
+                <div class="platform-box engine-layer">
+                    <div class="platform-box-title">Engine Layer</div>
+                    <ul>
+                        <li>NLP / LLM</li>
+                        <li>RAG System</li>
+                        <li>Rules Engine</li>
+                        <li>ML Models</li>
+                        <li>Explainability</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="platform-arrow">→</div>
+            <div class="platform-col">
+                <div class="platform-box app-layer">
+                    <div class="platform-box-title">Application Layer</div>
+                    <ul>
+                        <li>Dashboard</li>
+                        <li>Alerts</li>
+                        <li>Reports</li>
+                        <li>Chat Assistant</li>
+                        <li>Learning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="governance-bar">
+            <div class="governance-title">GOVERNANCE LAYER</div>
+            <div class="governance-items">
+                <span>Human-in-the-Loop</span>
+                <span>Model Versioning</span>
+                <span>Confidence Scoring</span>
+                <span>Rollout Controls</span>
+                <span>Audit Trail</span>
+                <span>PDP Compliance</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 id="risk-mitigation-strategy">Risk Mitigation Strategy</h3>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>False Positives</strong></td>
+<td>Confidence scoring; user feedback loop; threshold tuning</td>
+</tr>
+<tr>
+<td><strong>False Negatives</strong></td>
+<td>Conservative thresholds; regular validation against known cases</td>
+</tr>
+<tr>
+<td><strong>Accuracy Issues</strong></td>
+<td>RAG architecture; source citation requirement; human verification</td>
+</tr>
+<tr>
+<td><strong>Bahasa NLP Limitations</strong></td>
+<td>Regional fine-tuning; hybrid rule+ML approach; continuous improvement</td>
+</tr>
+<tr>
+<td><strong>Outdated Model</strong></td>
+<td>Continuous regulatory feed; scheduled retraining; drift monitoring</td>
+</tr>
+<tr>
+<td><strong>Data Privacy</strong></td>
+<td>On-premise option; encryption; PDP Law compliance framework</td>
+</tr>
+<tr>
+<td><strong>Explainability</strong></td>
+<td>Every decision comes with reasoning and source</td>
+</tr>
+<tr>
+<td><strong>Model Drift</strong></td>
+<td>Automated monitoring; scheduled retraining; version control</td>
+</tr>
+</tbody>
+</table>
+<h3 id="non-functional-requirements">Non-Functional Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Latency</strong></td>
+<td>Dashboard load &lt; 3 seconds; Alerts within 5 minutes of event</td>
+</tr>
+<tr>
+<td><strong>Availability</strong></td>
+<td>99.9% uptime SLA</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>ISO 27001 aligned; SOC 2 Type II ready</td>
+</tr>
+<tr>
+<td><strong>Privacy</strong></td>
+<td>PDP Law 2023 compliant; GDPR-ready architecture</td>
+</tr>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>Support 40+ entities, 10,000+ concurrent users</td>
+</tr>
+<tr>
+<td><strong>Auditability</strong></td>
+<td>7-year data retention; immutable audit logs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="go-to-market-strategy">Go-To-Market Strategy</h2>
+<h3 id="phase-1-foundation-internal-pilot-months-1-6">Phase 1: Foundation &amp; Internal Pilot (Months 1-6)</h3>
+<p><strong>Target:</strong> SQE internal compliance processes</p>
+<p><strong>Deliverables:</strong>
+- Core SaaS platform architecture
+- Synthetic data pipelines for testing
+- Basic Dashboard + Assistant MVP
+- Internal SOP digitization</p>
+<p><strong>Success Criteria:</strong>
+- 80% of SQE SOPs digitized and monitored
+- Platform stability validated
+- Initial model accuracy benchmarks</p>
+<p><strong>Risk Buffer:</strong> +1 month for data quality issues</p>
+<h3 id="phase-2-financial-services-pilot-months-7-12">Phase 2: Financial Services Pilot (Months 7-12)</h3>
+<p><strong>Target:</strong> One SMMA subsidiary (recommended: Sinarmas Multifinance)</p>
+<p><strong>Deliverables:</strong>
+- Human-in-the-Loop modules for high-risk alerts
+- Legacy system integration (first connector)
+- Full compliance monitoring deployment
+- User training and adoption program</p>
+<p><strong>Success Criteria:</strong>
+- 50% reduction in audit preparation time
+- Zero missed compliance deadlines
+- 90% user adoption rate
+- Pilot ROI demonstrated (target: 3:1)</p>
+<p><strong>Risk Buffer:</strong> +2 months for integration challenges</p>
+<h3 id="phase-3-financial-services-rollout-months-13-18">Phase 3: Financial Services Rollout (Months 13-18)</h3>
+<p><strong>Target:</strong> Expand to Bank Sinarmas, Asuransi Sinar Mas, other SMMA entities</p>
+<p><strong>Deliverables:</strong>
+- Cross-entity benchmarking operational
+- Full regulatory auto-adapt functionality
+- Comprehensive audit report generation
+- Multi-entity data consolidation</p>
+<p><strong>Success Criteria:</strong>
+- Measurable compliance score improvement across entities
+- 70% reduction in compliance FTE documentation time
+- Full PDP Law compliance certification</p>
+<p><strong>Risk Buffer:</strong> +2 months for multi-entity coordination</p>
+<h3 id="phase-4-mining-expansion-optimization-months-19-24">Phase 4: Mining Expansion &amp; Optimization (Months 19-24+)</h3>
+<p><strong>Target:</strong> GEMS/DSSA (Mining pillar)</p>
+<p><strong>Deliverables:</strong>
+- Mining-specific compliance modules (SMKP, MOE 2025, ESG)
+- Edge computing capabilities for remote sites
+- Advanced analytics and predictive capabilities</p>
+<p><strong>Strategic Value:</strong>
+- Mining revenue = USD 3B (2x Financial Services)
+- Position SQE as cross-pillar digital enabler</p>
+<p><strong>Risk Buffer:</strong> +3 months for mining-specific requirements</p>
+<h3 id="uat-stabilization-buffer-3-months-throughout">UAT &amp; Stabilization Buffer: 3 months (Throughout)</h3>
+<hr />
+<h2 id="success-metrics">Success Metrics</h2>
+<h3 id="business-impact-metrics-c-level">Business Impact Metrics (C-Level)</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Baseline</th>
+<th>Target</th>
+<th>Measurement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Revenue Protection</strong></td>
+<td>2-3 incidents/year</td>
+<td>Zero license suspensions</td>
+<td>Incidents avoided</td>
+</tr>
+<tr>
+<td><strong>Cost Avoidance</strong></td>
+<td>Rp 5B potential exposure</td>
+<td>Rp 10B+ fines prevented</td>
+<td>Risk exposure reduction</td>
+</tr>
+<tr>
+<td><strong>Rating Confidence</strong></td>
+<td>Current Fitch rating</td>
+<td>Maintain/improve</td>
+<td>Annual rating reviews</td>
+</tr>
+<tr>
+<td><strong>Operational Efficiency</strong></td>
+<td>60-70% FTE on docs</td>
+<td>30% reduction</td>
+<td>Time tracking analysis</td>
+</tr>
+</tbody>
+</table>
+<h3 id="roi-projections">ROI Projections</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Investment</th>
+<th>Savings</th>
+<th>Net Benefit</th>
+<th>Cumulative ROI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Year 1</td>
+<td>Rp 15B</td>
+<td>Rp 5B</td>
+<td>(Rp 10B)</td>
+<td>-67%</td>
+</tr>
+<tr>
+<td>Year 2</td>
+<td>Rp 8B</td>
+<td>Rp 20B</td>
+<td>Rp 12B</td>
+<td>52%</td>
+</tr>
+<tr>
+<td>Year 3</td>
+<td>Rp 5B</td>
+<td>Rp 35B</td>
+<td>Rp 30B</td>
+<td>207%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Target: 5:1 ROI by end of Year 3</strong></p>
+<h3 id="product-metrics">Product Metrics</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Baseline</th>
+<th>Target</th>
+<th>Measurement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Compliance Score</strong></td>
+<td>~75%</td>
+<td>95%+ across all entities</td>
+<td>Platform scoring</td>
+</tr>
+<tr>
+<td><strong>Audit Time Reduction</strong></td>
+<td>4-6 weeks</td>
+<td>70% faster (1-2 weeks)</td>
+<td>Before/after comparison</td>
+</tr>
+<tr>
+<td><strong>Incident Reduction</strong></td>
+<td>8-12 findings</td>
+<td>50% fewer (4-6)</td>
+<td>Year-over-year tracking</td>
+</tr>
+<tr>
+<td><strong>User Adoption</strong></td>
+<td>N/A</td>
+<td>90% active users</td>
+<td>Monthly active users</td>
+</tr>
+<tr>
+<td><strong>System Accuracy</strong></td>
+<td>N/A</td>
+<td>95%+ precision, 90%+ recall</td>
+<td>Model evaluation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="employee-engagement-metrics">Employee Engagement Metrics</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Baseline</th>
+<th>Target</th>
+<th>Measurement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Training Completion</strong></td>
+<td>~70%</td>
+<td>100% within grace period</td>
+<td>Platform tracking</td>
+</tr>
+<tr>
+<td><strong>Learning Participation</strong></td>
+<td>N/A</td>
+<td>80%+ weekly active</td>
+<td>Engagement metrics</td>
+</tr>
+<tr>
+<td><strong>Assistant Usage</strong></td>
+<td>N/A</td>
+<td>500+ queries/month</td>
+<td>Usage analytics</td>
+</tr>
+<tr>
+<td><strong>NPS Score</strong></td>
+<td>N/A</td>
+<td>40+</td>
+<td>Quarterly surveys</td>
+</tr>
+<tr>
+<td><strong>SOP Comprehension</strong></td>
+<td>~60%</td>
+<td>85%+</td>
+<td>Assessment scores</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="competitive-differentiation">Competitive Differentiation</h2>
+<h3 id="why-compas-vs-global-players">Why COMPAS vs. Global Players?</h3>
+<table>
+<thead>
+<tr>
+<th>Competitor</th>
+<th>Their Strength</th>
+<th>COMPAS Advantage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IBM OpenPages</strong></td>
+<td>Enterprise GRC, Watson</td>
+<td>Local regulatory expertise (OJK, BI, MOE); Native Bahasa Indonesia; Lower TCO</td>
+</tr>
+<tr>
+<td><strong>SAP GRC</strong></td>
+<td>ERP integration</td>
+<td>Not locked into SAP ecosystem; works with any ERP; faster implementation</td>
+</tr>
+<tr>
+<td><strong>ServiceNow GRC</strong></td>
+<td>IT workflow integration</td>
+<td>Purpose-built for compliance, not adapted from ITSM; compliance-first design</td>
+</tr>
+<tr>
+<td><strong>Celonis</strong></td>
+<td>Process mining</td>
+<td>Compliance-first, not process-first; includes learning &amp; engagement</td>
+</tr>
+<tr>
+<td><strong>Regional Players</strong> (Singapore, India)</td>
+<td>Regional presence</td>
+<td>Deep Indonesian regulatory knowledge; local support; Bahasa-first</td>
+</tr>
+</tbody>
+</table>
+<h3 id="unique-compas-differentiators">Unique COMPAS Differentiators</h3>
+<ol>
+<li><strong>Indonesian Regulatory Intelligence</strong> - Built-in knowledge of OJK, BI, MOE, SMKP regulations with OCR for Indonesian PDFs</li>
+<li><strong>Native Bahasa Indonesia</strong> - Not just translation; trained on formal/informal Indonesian business language</li>
+<li><strong>Contextual Compliance Engagement</strong> - Culture-appropriate engagement for Indonesian corporate environment</li>
+<li><strong>Human-in-the-Loop by Design</strong> - Built for Indonesian corporate approval culture</li>
+<li><strong>Cross-Pillar Architecture</strong> - Designed for Financial Services AND Mining from day one</li>
+<li><strong>Sinar Mas Integration Ready</strong> - Pre-built for multi-entity group structure</li>
+</ol>
+<h3 id="competitive-response-strategy">Competitive Response Strategy</h3>
+<table>
+<thead>
+<tr>
+<th>If Competitor Does...</th>
+<th>COMPAS Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Launches Bahasa support</td>
+<td>Deepen local regulatory expertise; faster OJK/BI integration</td>
+</tr>
+<tr>
+<td>Offers lower pricing</td>
+<td>Emphasize TCO advantage; local support value</td>
+</tr>
+<tr>
+<td>Acquires regional player</td>
+<td>Accelerate mining expansion; lock in SMMA contracts</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="investment-resources">Investment &amp; Resources</h2>
+<h3 id="team-requirements">Team Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Count</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product Manager</td>
+<td>1</td>
+<td>Product strategy, roadmap, stakeholder management</td>
+</tr>
+<tr>
+<td>Tech Lead</td>
+<td>1</td>
+<td>Architecture, technical decisions</td>
+</tr>
+<tr>
+<td>Backend Engineers</td>
+<td>3</td>
+<td>API, data pipeline, integrations</td>
+</tr>
+<tr>
+<td>Frontend Engineers</td>
+<td>2</td>
+<td>Dashboard, mobile, UX</td>
+</tr>
+<tr>
+<td>ML Engineers</td>
+<td>2</td>
+<td>Model development, NLP, explainability</td>
+</tr>
+<tr>
+<td>Data Engineers</td>
+<td>2</td>
+<td>ETL, data quality, integration</td>
+</tr>
+<tr>
+<td>QA Engineer</td>
+<td>1</td>
+<td>Testing, quality assurance</td>
+</tr>
+<tr>
+<td>UX Designer</td>
+<td>1</td>
+<td>User research, interface design</td>
+</tr>
+<tr>
+<td>Compliance SME</td>
+<td>1</td>
+<td>Domain expertise, regulatory knowledge</td>
+</tr>
+<tr>
+<td>Security Engineer</td>
+<td>1</td>
+<td>Security, privacy, PDP compliance</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total: 15 FTE</strong></p>
+<h3 id="technology-investment">Technology Investment</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Year 1</th>
+<th>Year 2</th>
+<th>Year 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloud Infrastructure</td>
+<td>Rp 3B</td>
+<td>Rp 4B</td>
+<td>Rp 5B</td>
+</tr>
+<tr>
+<td>LLM API Costs</td>
+<td>Rp 2B</td>
+<td>Rp 3B</td>
+<td>Rp 4B</td>
+</tr>
+<tr>
+<td>Security &amp; Compliance Tools</td>
+<td>Rp 1B</td>
+<td>Rp 0.5B</td>
+<td>Rp 0.5B</td>
+</tr>
+<tr>
+<td>Development Tools</td>
+<td>Rp 0.5B</td>
+<td>Rp 0.3B</td>
+<td>Rp 0.3B</td>
+</tr>
+<tr>
+<td><strong>Total Tech</strong></td>
+<td><strong>Rp 6.5B</strong></td>
+<td><strong>Rp 7.8B</strong></td>
+<td><strong>Rp 9.8B</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="pricing-strategy-internal-cost-allocation">Pricing Strategy (Internal Cost Allocation)</h3>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Features</th>
+<th>Suggested Allocation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Foundation</strong></td>
+<td>Dashboard, Basic Alerts, Audit Reports</td>
+<td>Rp 500M/entity/year</td>
+</tr>
+<tr>
+<td><strong>Professional</strong></td>
+<td>+ Assistant, Engagement, Auto-Adapt</td>
+<td>Rp 800M/entity/year</td>
+</tr>
+<tr>
+<td><strong>Enterprise</strong></td>
+<td>+ Custom Integration, Dedicated Support</td>
+<td>Rp 1.2B/entity/year</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="risk-assessment">Risk Assessment</h2>
+<h3 id="project-risks-mitigations">Project Risks &amp; Mitigations</h3>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Probability</th>
+<th>Impact</th>
+<th>Mitigation</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stakeholder Buy-in</strong></td>
+<td>Medium</td>
+<td>High</td>
+<td>Early C-level sponsorship; quick wins in pilot; regular steering committee</td>
+<td>PM</td>
+</tr>
+<tr>
+<td><strong>Data Quality Issues</strong></td>
+<td>High</td>
+<td>Medium</td>
+<td>Staged data onboarding; quality scoring; dedicated data team</td>
+<td>Data Lead</td>
+</tr>
+<tr>
+<td><strong>Change Resistance</strong></td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Contextual engagement; extensive training; grace periods; champion network</td>
+<td>PM + HR</td>
+</tr>
+<tr>
+<td><strong>Regulatory Changes</strong></td>
+<td>High</td>
+<td>Low</td>
+<td>Auto-adapt feature; modular architecture; regulatory partnerships</td>
+<td>Compliance SME</td>
+</tr>
+<tr>
+<td><strong>Technical Complexity</strong></td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Phased delivery; proven tech stack; external partnerships</td>
+<td>Tech Lead</td>
+</tr>
+<tr>
+<td><strong>Resource Constraints</strong></td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Prioritized MVP; contingency budget; external partnerships</td>
+<td>PM</td>
+</tr>
+<tr>
+<td><strong>Bahasa NLP Accuracy</strong></td>
+<td>Medium</td>
+<td>High</td>
+<td>Hybrid rule+ML; continuous tuning; human fallback</td>
+<td>ML Lead</td>
+</tr>
+<tr>
+<td><strong>Legacy Integration</strong></td>
+<td>High</td>
+<td>Medium</td>
+<td>Middleware approach; staged rollout; dedicated integration team</td>
+<td>Tech Lead</td>
+</tr>
+<tr>
+<td><strong>PDP Compliance</strong></td>
+<td>Low</td>
+<td>High</td>
+<td>Privacy-by-design; legal review; certification path</td>
+<td>Security + Legal</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contingency-plans">Contingency Plans</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Trigger</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pilot fails to meet targets</strong></td>
+<td>&lt;70% of success criteria</td>
+<td>Extend pilot 3 months; add resources; re-scope if needed</td>
+</tr>
+<tr>
+<td><strong>Major regulatory change mid-project</strong></td>
+<td>New OJK/MOE regulation</td>
+<td>Pause non-critical features; prioritize regulatory update</td>
+</tr>
+<tr>
+<td><strong>Key resource departure</strong></td>
+<td>Loss of Tech Lead or ML Lead</td>
+<td>Pre-identified backups; knowledge documentation; contractor backup</td>
+</tr>
+<tr>
+<td><strong>Budget overrun &gt;20%</strong></td>
+<td>Quarterly review shows overspend</td>
+<td>Scope reduction; phase delay; executive escalation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="the-ask">The Ask</h2>
+<h3 id="immediate-next-steps">Immediate Next Steps</h3>
+<ol>
+<li><strong>Executive Sponsorship</strong> - Secure C-level champion within SMMA</li>
+<li><strong>Pilot Agreement</strong> - Confirm first pilot entity (recommend: SQE internal → Sinarmas Multifinance)</li>
+<li><strong>Team Formation</strong> - Allocate core team resources (15 FTE)</li>
+<li><strong>Budget Approval</strong> - Initial 12-month runway (Rp 15B Year 1)</li>
+<li><strong>Data Access</strong> - Secure access to compliance data for pilot entity</li>
+<li><strong>Legal Review</strong> - PDP Law compliance assessment</li>
+</ol>
+<h3 id="decision-required">Decision Required</h3>
+<p>Approve COMPAS for development with:
+- Phase 1 pilot starting Q1 2025
+- Initial budget allocation for 12-month runway
+- Designated pilot entity within SMMA
+- Commitment to 18-24 month full rollout timeline</p>
+<h3 id="governance-structure">Governance Structure</h3>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Responsibility</th>
+<th>Cadence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Executive Sponsor</strong></td>
+<td>Strategic direction, budget approval</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td><strong>Steering Committee</strong></td>
+<td>Cross-functional oversight, escalations</td>
+<td>Bi-weekly</td>
+</tr>
+<tr>
+<td><strong>Product Team</strong></td>
+<td>Delivery, day-to-day decisions</td>
+<td>Daily standups</td>
+</tr>
+<tr>
+<td><strong>User Advisory Group</strong></td>
+<td>Feedback, requirements validation</td>
+<td>Monthly</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="closing">Closing</h2>
+<p>Compliance is not just about avoiding fines—it's about building a culture of excellence, transparency, and trust. COMPAS transforms compliance from a burden into a competitive advantage.</p>
+<p>For Sinar Mas Group, with its diverse portfolio across Financial Services and Mining, a unified compliance platform isn't a nice-to-have—it's a strategic imperative. The regulatory environment is only getting stricter, and the companies that thrive will be those that turn compliance into operational efficiency.</p>
+<p>COMPAS is that bridge.</p>
+<hr />
+<p><em>"Be the golden bridge that people want to pass and could pass to make their lives and activities easier."</em></p>
+<p><strong>— Tata</strong></p>
+<hr />
+<p><strong>Document Control</strong></p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Dec 2024</td>
+<td>Banat Zata</td>
+<td>Initial version</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>Dec 2024</td>
+<td>Banat Zata</td>
+<td>Enhanced with detailed frameworks</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Prepared for SQE Senior Product Manager - AI &amp; Enterprise Solutions Case Study</em></p>
+        </div>
+        <div class="footer">
+            <div class="footer-quote">"Be the golden bridge that people want to pass and could pass to make their lives and activities easier."</div>
+            <div class="footer-author">— Tata</div>
+        </div>
+    </div>
+</body>
+</html>

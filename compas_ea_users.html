@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>COMPAS - User Feature Map</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #f1f5f9;
+            color: #111827;
+            font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+            padding: 32px 24px 40px 24px;
+        }
+        .page {
+            max-width: 1350px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #ffffff;
+            box-shadow: 0 25px 80px rgba(15,23,42,0.15);
+            border: 1px solid rgba(209,213,219,0.8);
+        }
+        .page-header {
+            background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+            padding: 28px 40px 24px 40px;
+            text-align: center;
+        }
+        .page-title {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        .page-subtitle {
+            font-size: 14px;
+            color: rgba(255,255,255,0.85);
+            font-weight: 500;
+        }
+        .page-tagline {
+            font-size: 12px;
+            color: rgba(255,255,255,0.65);
+            margin-top: 8px;
+        }
+        .content {
+            padding: 24px 28px 32px 28px;
+        }
+        .legend {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .legend-left {
+            font-size: 11px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .legend-right {
+            font-size: 11px;
+            color: #9ca3af;
+        }
+        .user-row {
+            display: grid;
+            grid-template-columns: 220px minmax(0, 1fr);
+            gap: 14px;
+            align-items: stretch;
+            margin-bottom: 16px;
+        }
+        .user-label {
+            border-radius: 12px;
+            padding: 18px 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(15,23,42,0.25);
+        }
+        .user-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        .user-name {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+        .user-desc {
+            font-size: 10px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        .user-body {
+            border-radius: 12px;
+            padding: 14px 16px;
+            border: 2px solid;
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 10px 12px;
+            min-width: 160px;
+            flex: 1 1 180px;
+            max-width: 220px;
+            box-shadow: 0 2px 6px rgba(148,163,184,0.25);
+            border: 1px solid rgba(209,213,219,0.7);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(148,163,184,0.4);
+        }
+        .card-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 3px;
+        }
+        .card-desc {
+            font-size: 9px;
+            color: #64748b;
+            line-height: 1.35;
+        }
+        .footer {
+            text-align: center;
+            padding: 16px 32px;
+            background: #f8fafc;
+            border-top: 1px solid #e5e7eb;
+        }
+        .footer-text {
+            font-size: 11px;
+            color: #9ca3af;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 10px;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 20px;
+            font-weight: 800;
+            color: #3b82f6;
+        }
+        .stat-label {
+            font-size: 10px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <header class="page-header">
+            <div class="page-title">COMPAS</div>
+            <div class="page-subtitle">User Feature Map — Fitur per Role</div>
+            <div class="page-tagline">Compliance Process Automation Service — Sinar Mas Group</div>
+        </header>
+        <div class="content">
+            <div class="legend">
+                <div class="legend-left">6 User Roles × Feature Access</div>
+                <div class="legend-right">Based on Executive Vision + AI Review</div>
+            </div>
+            
+        <section class="user-row">
+            <div class="user-label" style="background:#1e3a8a; color:#ffffff;">
+                <div class="user-icon">👔</div>
+                <div class="user-name">C-Level / Board</div>
+                <div class="user-desc">Eksekutif yang membutuhkan visibility risiko enterprise-wide</div>
+            </div>
+            <div class="user-body" style="background:#eff1f6; border-color:#bbc3db;">
+                <div class="cards">
+                    
+                <div class="card">
+                    <div class="card-title">Intelligent Risk Dashboard</div>
+                    <div class="card-desc">Single view risiko seluruh entitas</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Risk Heatmap</div>
+                    <div class="card-desc">Visual RED/YELLOW/GREEN per subsidiary</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Financial Exposure Ticker</div>
+                    <div class="card-desc">Real-time 'Rp X.X B at risk'</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Regulatory Countdown</div>
+                    <div class="card-desc">Deadline tracker dengan days remaining</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Cross-Entity Benchmarking</div>
+                    <div class="card-desc">Perbandingan performa antar subsidiary</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Executive Summary Reports</div>
+                    <div class="card-desc">AI-generated insights untuk board meeting</div>
+                </div>
+            
+                </div>
+            </div>
+        </section>
+        
+        <section class="user-row">
+            <div class="user-label" style="background:#7c3aed; color:#ffffff;">
+                <div class="user-icon">📋</div>
+                <div class="user-name">Compliance Officer</div>
+                <div class="user-desc">Penanggung jawab kepatuhan yang fokus pada strategic risk management</div>
+            </div>
+            <div class="user-body" style="background:#f5f1fd; border-color:#d7c3f9;">
+                <div class="cards">
+                    
+                <div class="card">
+                    <div class="card-title">Real-Time Deviation Alerts</div>
+                    <div class="card-desc">Notifikasi pelanggaran dengan severity level</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">SOP Amendment Drafting</div>
+                    <div class="card-desc">AI-drafted SOP updates untuk review</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Human-in-the-Loop Approval</div>
+                    <div class="card-desc">Workflow approval untuk high-risk decisions</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Regulatory Change Monitor</div>
+                    <div class="card-desc">Tracking perubahan OJK, BI, MOE, SMKP</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Audit Report Generator</div>
+                    <div class="card-desc">Auto-compile dengan full audit trail</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Grace Period Manager</div>
+                    <div class="card-desc">Kelola transisi SOP baru (30-60 hari)</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Model Confidence Review</div>
+                    <div class="card-desc">Review AI decisions dengan SHAP/LIME explanation</div>
+                </div>
+            
+                </div>
+            </div>
+        </section>
+        
+        <section class="user-row">
+            <div class="user-label" style="background:#0891b2; color:#ffffff;">
+                <div class="user-icon">👥</div>
+                <div class="user-name">Manager / Supervisor</div>
+                <div class="user-desc">Pemimpin tim yang perlu visibility kepatuhan timnya</div>
+            </div>
+            <div class="user-body" style="background:#edf7f9; border-color:#b4dee7;">
+                <div class="cards">
+                    
+                <div class="card">
+                    <div class="card-title">Team Compliance Dashboard</div>
+                    <div class="card-desc">Status kepatuhan per anggota tim</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Actionable Alerts</div>
+                    <div class="card-desc">Notifikasi deviasi tim dengan action items</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Training Progress Tracker</div>
+                    <div class="card-desc">Monitor penyelesaian training tim</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Department Leaderboard</div>
+                    <div class="card-desc">Ranking kepatuhan antar departemen</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Escalation Workflow</div>
+                    <div class="card-desc">Eskalasi issue ke Compliance Officer</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">SOP Update Notifications</div>
+                    <div class="card-desc">Alert ketika ada SOP baru untuk tim</div>
+                </div>
+            
+                </div>
+            </div>
+        </section>
+        
+        <section class="user-row">
+            <div class="user-label" style="background:#059669; color:#ffffff;">
+                <div class="user-icon">🧑‍💼</div>
+                <div class="user-name">Employee / Staff</div>
+                <div class="user-desc">Karyawan yang perlu memahami dan mengikuti SOP dengan mudah</div>
+            </div>
+            <div class="user-body" style="background:#edf7f4; border-color:#b4dfd2;">
+                <div class="cards">
+                    
+                <div class="card">
+                    <div class="card-title">AI Compliance Assistant</div>
+                    <div class="card-desc">Tanya jawab SOP dalam Bahasa Indonesia</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Personal Compliance Score</div>
+                    <div class="card-desc">Dashboard pribadi dengan badges</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Gamified Learning</div>
+                    <div class="card-desc">Daily/weekly quiz, earn points</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">SOP Library</div>
+                    <div class="card-desc">Akses mudah ke semua SOP relevan</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Achievement Timeline</div>
+                    <div class="card-desc">Visual journey trainings &amp; certifications</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Fun Reminders</div>
+                    <div class="card-desc">Notifikasi playful untuk SOP baru</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Document Compliance Checker</div>
+                    <div class="card-desc">Validasi dokumen sesuai SOP</div>
+                </div>
+            
+                </div>
+            </div>
+        </section>
+        
+        <section class="user-row">
+            <div class="user-label" style="background:#ca8a04; color:#111827;">
+                <div class="user-icon">🆕</div>
+                <div class="user-name">New Joiner</div>
+                <div class="user-desc">Karyawan baru yang perlu onboarding compliance terstruktur</div>
+            </div>
+            <div class="user-body" style="background:#fbf6ed; border-color:#efdbb3;">
+                <div class="cards">
+                    
+                <div class="card">
+                    <div class="card-title">NJO Compliance Track</div>
+                    <div class="card-desc">Structured learning path untuk new hire</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Onboarding Checklist</div>
+                    <div class="card-desc">Step-by-step compliance requirements</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Buddy System Integration</div>
+                    <div class="card-desc">Connect dengan mentor compliance</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Progress Milestones</div>
+                    <div class="card-desc">Track penyelesaian onboarding</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Quick Reference Guides</div>
+                    <div class="card-desc">Simplified SOP summaries</div>
+                </div>
+            
+                </div>
+            </div>
+        </section>
+        
+        <section class="user-row">
+            <div class="user-label" style="background:#dc2626; color:#ffffff;">
+                <div class="user-icon">🔍</div>
+                <div class="user-name">Auditor (Internal/External)</div>
+                <div class="user-desc">Auditor yang membutuhkan akses cepat ke data kepatuhan</div>
+            </div>
+            <div class="user-body" style="background:#fcefef; border-color:#f4bdbd;">
+                <div class="cards">
+                    
+                <div class="card">
+                    <div class="card-title">Pre-compiled Audit Trails</div>
+                    <div class="card-desc">Data lengkap dengan timestamps</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">AI-Explained Findings</div>
+                    <div class="card-desc">Reasoning di balik setiap flagged item</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Regulator-Format Export</div>
+                    <div class="card-desc">Output sesuai format OJK/BI/MOE</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Historical Compliance Data</div>
+                    <div class="card-desc">7-year retention dengan immutable logs</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Grace Period Status Report</div>
+                    <div class="card-desc">Siapa sudah/belum transisi ke SOP baru</div>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Cross-Entity Audit View</div>
+                    <div class="card-desc">Consolidated view untuk group audit</div>
+                </div>
+            
+                </div>
+            </div>
+        </section>
+        
+        </div>
+        <footer class="footer">
+            <div class="footer-text">COMPAS — Making compliance invisible yet omnipresent</div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">User Roles</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">37</div>
+                    <div class="stat-label">Features</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">Subsidiaries</div>
+                </div>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
